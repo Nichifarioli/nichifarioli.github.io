@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nicole Farioli — Software Engineer | Siti Web & Web App su misura</title>
-<meta name="description" content="Siti web, web app e app mobile su misura. Dalla prima idea alla messa online.">
+<title>Nicole Farioli — Software Engineer</title>
+<meta name="description" content="Sviluppo siti web, web app e app mobile. Portfolio e contatti.">
 <meta property="og:title" content="Nicole Farioli — Software Engineer">
-<meta property="og:description" content="Siti web, web app e app mobile su misura.">
+<meta property="og:description" content="Sviluppo siti web, web app e app mobile.">
 <meta property="og:image" content="https://nichifarioli.github.io/FOTO-NICOLE.jpeg">
 <meta property="og:url" content="https://nichifarioli.github.io/">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#fefbff">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>N</text></svg>">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
   :root {
@@ -34,7 +34,6 @@
     --max-width: 1120px;
 
     --grad-main: linear-gradient(135deg, #8b5cf6 0%, #e91e63 50%, #0ea5e9 100%);
-    --grad-soft: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(233, 30, 99, 0.08));
     --grad-text: linear-gradient(135deg, #8b5cf6 0%, #e91e63 50%, #0ea5e9 100%);
 
     --shadow-sm: 0 4px 16px rgba(139, 92, 246, 0.08);
@@ -79,7 +78,6 @@
     background: var(--grad-main);
     z-index: 9999;
     transition: width .1s linear;
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
   }
 
   /* ============ BLOB ============ */
@@ -87,7 +85,7 @@
     position: fixed;
     border-radius: 50%;
     filter: blur(110px);
-    opacity: 0.35;
+    opacity: 0.28;
     z-index: 0;
     pointer-events: none;
     will-change: transform;
@@ -109,7 +107,7 @@
     background: #a5f3fc;
     bottom: -150px; left: 15%;
     animation: float3 32s ease-in-out infinite;
-    opacity: 0.4;
+    opacity: 0.32;
   }
   @keyframes float1 {
     0%, 100% { transform: translate(0, 0) scale(1); }
@@ -167,7 +165,7 @@
   .logo {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     letter-spacing: -0.02em;
     color: var(--text);
     text-decoration: none;
@@ -185,10 +183,9 @@
     font-size: 0.95rem;
     font-weight: 800;
     color: #fff;
-    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.35);
     transition: transform .4s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .logo:hover .logo-mark { transform: rotate(-8deg) scale(1.1); }
+  .logo:hover .logo-mark { transform: rotate(-6deg) scale(1.08); }
 
   nav ul {
     display: flex;
@@ -217,48 +214,23 @@
   nav ul li a[aria-current="true"] {
     color: #fff;
     background: var(--grad-main);
-    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.35);
   }
 
   /* ============ HERO ============ */
   .hero {
-    padding: 130px 0 80px;
+    padding: 140px 0 90px;
     text-align: center;
-  }
-
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 18px 8px 8px;
-    background: rgba(255, 255, 255, 0.85);
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-bottom: 32px;
-    backdrop-filter: blur(10px);
-    box-shadow: var(--shadow-sm);
-    animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
-  .hero-badge-tag {
-    padding: 4px 12px;
-    background: var(--grad-main);
-    color: #fff;
-    border-radius: 100px;
-    font-weight: 600;
-    font-size: 0.75rem;
   }
 
   .hero h1 {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(2.3rem, 6vw, 4.6rem);
+    font-size: clamp(2.3rem, 6vw, 4.4rem);
     font-weight: 700;
     letter-spacing: -0.04em;
-    line-height: 1.05;
+    line-height: 1.08;
     margin-bottom: 24px;
     text-wrap: balance;
-    animation: fadeInUp 1s .1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
   .hero h1 .grad {
     background: var(--grad-text);
@@ -276,10 +248,10 @@
   .hero-desc {
     font-size: clamp(1rem, 1.5vw, 1.12rem);
     color: var(--text-muted);
-    max-width: 560px;
+    max-width: 580px;
     margin: 0 auto 40px;
     text-wrap: pretty;
-    animation: fadeInUp 1s .2s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation: fadeInUp 1s .15s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
   .cta-group {
@@ -301,97 +273,45 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 16px 32px;
+    padding: 15px 30px;
     border-radius: 100px;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 0.95rem;
     text-decoration: none;
-    transition: all .35s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: all .3s cubic-bezier(0.22, 1, 0.36, 1);
     border: 1px solid transparent;
     cursor: pointer;
     position: relative;
-    overflow: hidden;
-    isolation: isolate;
   }
   .btn-primary {
     background: var(--grad-main);
     background-size: 200% 200%;
     color: #fff;
-    box-shadow: 0 8px 28px rgba(139, 92, 246, 0.28);
+    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.25);
     animation: gradShift 6s ease infinite;
   }
   .btn-primary:hover {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
     box-shadow: var(--shadow-glow);
   }
   .btn-secondary {
     background: rgba(255, 255, 255, 0.9);
     color: var(--text);
     border-color: var(--border-strong);
-    backdrop-filter: blur(10px);
     box-shadow: var(--shadow-sm);
   }
   .btn-secondary:hover {
     background: #fff;
     border-color: var(--violet);
-    transform: translateY(-3px);
+    transform: translateY(-2px);
     box-shadow: var(--shadow-md);
   }
-
-  /* Icone dentro i bottoni */
   .btn svg {
     flex-shrink: 0;
     transition: transform .35s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .btn:hover svg {
-    transform: scale(1.15) rotate(-6deg);
-  }
-
-  /* ============ NUMERI / HIGHLIGHTS ============ */
-  .highlights {
-    padding: 40px 0 80px;
-  }
-  .highlights-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-  @media (min-width: 768px) {
-    .highlights-grid { grid-template-columns: repeat(3, 1fr); }
-  }
-  .highlight {
-    background: rgba(255, 255, 255, 0.7);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 28px 32px;
-    text-align: center;
-    backdrop-filter: blur(10px);
-    transition: all .4s cubic-bezier(0.22, 1, 0.36, 1);
-    box-shadow: var(--shadow-sm);
-  }
-  .highlight:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-    border-color: var(--border-strong);
-  }
-  .highlight-num {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 2.4rem;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1;
-    margin-bottom: 8px;
-    background: var(--grad-text);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: gradShift 6s ease infinite;
-  }
-  .highlight-label {
-    font-size: 0.92rem;
-    color: var(--text-muted);
-    font-weight: 500;
+    transform: scale(1.1) rotate(-4deg);
   }
 
   /* ============ SEZIONI ============ */
@@ -401,34 +321,23 @@
     z-index: 2;
   }
 
-  .section-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.78rem;
+  .section-title {
+    font-size: 0.85rem;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.14em;
     color: var(--text-muted);
     font-weight: 600;
-    margin-bottom: 18px;
-  }
-  .section-label::before {
-    content: '';
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--fuchsia);
-    box-shadow: 0 0 12px var(--fuchsia);
+    margin-bottom: 16px;
   }
 
   .section-heading {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(1.9rem, 4vw, 3rem);
+    font-size: clamp(1.8rem, 3.8vw, 2.6rem);
     font-weight: 700;
     letter-spacing: -0.03em;
-    line-height: 1.1;
+    line-height: 1.15;
     margin-bottom: 20px;
-    max-width: 22ch;
-    text-wrap: balance;
+    max-width: 26ch;
   }
   .section-heading .grad {
     background: var(--grad-text);
@@ -439,25 +348,18 @@
     animation: gradShift 6s ease infinite;
   }
 
-  .section-intro {
-    color: var(--text-muted);
-    max-width: 620px;
-    margin-bottom: 56px;
-    font-size: 1.05rem;
-  }
-
   .reveal {
     opacity: 0;
-    transform: translateY(36px);
-    transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translateY(30px);
+    transition: opacity .9s cubic-bezier(0.22, 1, 0.36, 1),
+                transform .9s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .reveal.visible {
     opacity: 1;
     transform: translateY(0);
   }
 
-  /* ============ ABOUT con FOTO ============ */
+  /* ============ CHI SONO ============ */
   .about-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -470,7 +372,7 @@
 
   .about-text p {
     color: var(--text-muted);
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     font-size: 1.05rem;
     line-height: 1.75;
   }
@@ -501,7 +403,7 @@
     z-index: 2;
   }
   .photo-wrap:hover .photo-frame {
-    transform: scale(1.02) rotate(-1deg);
+    transform: scale(1.015) rotate(-0.8deg);
   }
 
   .photo-inner {
@@ -510,7 +412,6 @@
     border-radius: calc(var(--radius-lg) - 4px);
     background: var(--bg-soft);
     overflow: hidden;
-    position: relative;
   }
 
   .photo-inner img {
@@ -530,7 +431,7 @@
     width: 100px; height: 100px;
     background: var(--grad-main);
     top: -20px; right: -20px;
-    opacity: 0.15;
+    opacity: 0.12;
     filter: blur(20px);
     animation: float1 8s ease-in-out infinite;
   }
@@ -538,37 +439,9 @@
     width: 80px; height: 80px;
     background: var(--fuchsia);
     bottom: -20px; left: -20px;
-    opacity: 0.2;
+    opacity: 0.15;
     filter: blur(24px);
     animation: float2 10s ease-in-out infinite;
-  }
-
-  .photo-badge {
-    position: absolute;
-    bottom: 20px; left: 20px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    padding: 12px 18px;
-    border-radius: 100px;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--text);
-    box-shadow: var(--shadow-md);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    z-index: 3;
-  }
-  .photo-badge .dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: #10b981;
-    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2); }
-    50% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.05); }
   }
 
   .skills-grid {
@@ -579,34 +452,22 @@
   }
 
   .skill-pill {
-    padding: 10px 18px;
+    padding: 9px 16px;
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 100px;
-    font-size: 0.88rem;
+    font-size: 0.86rem;
     font-weight: 500;
     color: var(--text);
-    position: relative;
-    overflow: hidden;
-    transition: all .35s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: all .3s cubic-bezier(0.22, 1, 0.36, 1);
     box-shadow: var(--shadow-sm);
-  }
-  .skill-pill::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--grad-main);
-    opacity: 0;
-    transition: opacity .35s;
-    z-index: -1;
   }
   .skill-pill:hover {
     color: #fff;
+    background: var(--grad-main);
     border-color: transparent;
-    transform: translateY(-3px) scale(1.04);
-    box-shadow: 0 10px 24px rgba(139, 92, 246, 0.35);
+    transform: translateY(-2px);
   }
-  .skill-pill:hover::before { opacity: 1; }
 
   /* ============ COME LAVORO ============ */
   .steps-grid {
@@ -622,49 +483,19 @@
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 40px 32px;
-    position: relative;
-    overflow: hidden;
-    transition: all .5s cubic-bezier(0.22, 1, 0.36, 1);
+    padding: 36px 32px;
+    transition: all .45s cubic-bezier(0.22, 1, 0.36, 1);
     box-shadow: var(--shadow-sm);
   }
-  .step::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 3px;
-    background: var(--grad-main);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform .6s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .step:hover::before { transform: scaleX(1); }
   .step:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
     border-color: var(--border-strong);
-  }
-
-  .step-num {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 3rem;
-    font-weight: 700;
-    letter-spacing: -0.04em;
-    line-height: 1;
-    background: var(--grad-text);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: gradShift 6s ease infinite;
-    margin-bottom: 20px;
-    display: block;
-    opacity: 0.9;
   }
 
   .step h3 {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     font-weight: 700;
     letter-spacing: -0.01em;
     margin-bottom: 12px;
@@ -677,10 +508,10 @@
     line-height: 1.7;
   }
 
-  /* ============ TIMELINE PERCORSO ============ */
+  /* ============ PERCORSO ============ */
   .timeline {
     position: relative;
-    max-width: 800px;
+    max-width: 820px;
     margin: 0 auto;
     padding: 20px 0;
   }
@@ -690,8 +521,8 @@
     position: absolute;
     left: 20px;
     top: 0; bottom: 0;
-    width: 2px;
-    background: linear-gradient(180deg, transparent, var(--border-strong) 10%, var(--border-strong) 90%, transparent);
+    width: 1.5px;
+    background: linear-gradient(180deg, transparent, var(--border-strong) 8%, var(--border-strong) 92%, transparent);
   }
   @media (min-width: 768px) {
     .timeline::before { left: 50%; transform: translateX(-1px); }
@@ -699,8 +530,8 @@
 
   .timeline-item {
     position: relative;
-    padding-left: 60px;
-    margin-bottom: 48px;
+    padding-left: 56px;
+    margin-bottom: 44px;
   }
   .timeline-item:last-child { margin-bottom: 0; }
 
@@ -708,84 +539,70 @@
     .timeline-item {
       padding-left: 0;
       width: 50%;
-      padding-right: 48px;
+      padding-right: 44px;
     }
     .timeline-item:nth-child(even) {
       margin-left: 50%;
       padding-right: 0;
-      padding-left: 48px;
+      padding-left: 44px;
     }
   }
 
   .timeline-dot {
     position: absolute;
-    left: 12px;
-    top: 24px;
-    width: 18px; height: 18px;
+    left: 14px;
+    top: 22px;
+    width: 14px; height: 14px;
     border-radius: 50%;
     background: #fff;
-    border: 3px solid var(--violet);
-    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15);
+    border: 2.5px solid var(--violet);
     z-index: 2;
-    transition: all .4s;
+    transition: all .35s;
   }
   @media (min-width: 768px) {
     .timeline-dot {
       left: auto;
-      right: -9px;
+      right: -7px;
     }
     .timeline-item:nth-child(even) .timeline-dot {
-      left: -9px;
+      left: -7px;
       right: auto;
     }
   }
 
   .timeline-item:hover .timeline-dot {
     background: var(--violet);
-    box-shadow: 0 0 0 8px rgba(139, 92, 246, 0.2);
-    transform: scale(1.2);
+    box-shadow: 0 0 0 6px rgba(139, 92, 246, 0.15);
+    transform: scale(1.15);
   }
 
   .timeline-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 28px 32px;
+    padding: 26px 30px;
     box-shadow: var(--shadow-sm);
-    transition: all .45s cubic-bezier(0.22, 1, 0.36, 1);
-    position: relative;
-    overflow: hidden;
-  }
-  .timeline-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 4px; height: 100%;
-    background: var(--grad-main);
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform .5s ease;
+    transition: all .4s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .timeline-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
     border-color: var(--border-strong);
   }
-  .timeline-card:hover::before { transform: scaleY(1); }
 
   .timeline-date {
     display: inline-block;
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--violet);
     margin-bottom: 10px;
   }
 
   .timeline-title {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: 700;
     letter-spacing: -0.01em;
     margin-bottom: 6px;
@@ -793,14 +610,14 @@
   }
 
   .timeline-place {
-    font-size: 0.92rem;
+    font-size: 0.9rem;
     color: var(--text-muted);
     margin-bottom: 12px;
     font-weight: 500;
   }
 
   .timeline-desc {
-    font-size: 0.94rem;
+    font-size: 0.93rem;
     color: var(--text-muted);
     line-height: 1.65;
   }
@@ -815,33 +632,18 @@
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 44px 48px;
-    position: relative;
-    overflow: hidden;
-    transition: all .5s cubic-bezier(0.22, 1, 0.36, 1);
+    padding: 42px 46px;
+    transition: all .45s cubic-bezier(0.22, 1, 0.36, 1);
     box-shadow: var(--shadow-sm);
   }
-  .project::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 3px;
-    background: var(--grad-main);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform .6s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .project:hover::before { transform: scaleX(1); }
   .project:hover {
     border-color: var(--border-strong);
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
   }
 
   @media (max-width: 640px) {
-    .project { padding: 32px 26px; }
-    .logo { font-size: 0; gap: 0; }
-    .logo-mark { font-size: 0.95rem; }
+    .project { padding: 30px 24px; }
   }
 
   .project-header {
@@ -850,25 +652,25 @@
     align-items: flex-start;
     gap: 20px;
     flex-wrap: wrap;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
   }
 
   .project h3 {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: -0.02em;
-    line-height: 1.15;
-    max-width: 26ch;
+    line-height: 1.2;
+    max-width: 28ch;
   }
 
   .project-tag {
-    padding: 7px 16px;
-    background: var(--grad-soft);
+    padding: 6px 14px;
+    background: rgba(139, 92, 246, 0.08);
     border: 1px solid var(--border-strong);
-    color: var(--text);
+    color: var(--text-muted);
     border-radius: 100px;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -877,27 +679,27 @@
 
   .project-desc {
     color: var(--text-muted);
-    margin-bottom: 28px;
+    margin-bottom: 26px;
     font-size: 1rem;
     max-width: 68ch;
     line-height: 1.7;
   }
 
   .project-subtitle {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
-    color: var(--violet);
-    font-weight: 700;
-    margin-bottom: 18px;
-    margin-top: 28px;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 16px;
+    margin-top: 26px;
   }
 
   .project ul {
     list-style: none;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 9px;
   }
   @media (min-width: 700px) {
     .project ul { grid-template-columns: 1fr 1fr; column-gap: 40px; }
@@ -906,21 +708,16 @@
   .project ul li {
     color: var(--text-muted);
     font-size: 0.93rem;
-    padding-left: 24px;
+    padding-left: 20px;
     position: relative;
     line-height: 1.6;
-    transition: color .25s, transform .25s;
-  }
-  .project ul li:hover {
-    color: var(--text);
-    transform: translateX(4px);
   }
   .project ul li::before {
     content: '';
     position: absolute;
     left: 0; top: 0.7em;
-    width: 12px; height: 2px;
-    background: var(--grad-main);
+    width: 10px; height: 1.5px;
+    background: var(--violet);
     border-radius: 2px;
   }
 
@@ -928,121 +725,37 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-top: 28px;
-    padding-top: 24px;
+    margin-top: 26px;
+    padding-top: 22px;
     border-top: 1px solid var(--border);
   }
 
   .stack-item {
-    padding: 7px 15px;
+    padding: 6px 14px;
     background: rgba(139, 92, 246, 0.05);
     border: 1px solid var(--border);
     border-radius: 100px;
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
     font-weight: 500;
-    transition: all .3s;
+    transition: all .25s;
   }
   .stack-item:hover {
-    background: var(--grad-main);
-    color: #fff;
-    border-color: transparent;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.35);
+    border-color: var(--violet);
+    color: var(--violet);
   }
 
   .project-role {
-    margin-top: 22px;
-    font-size: 0.9rem;
+    margin-top: 20px;
+    font-size: 0.88rem;
     color: var(--text-muted);
     font-style: italic;
   }
 
-  /* ============ FAQ ============ */
-  .faq-list {
-    max-width: 780px;
-    margin: 0 auto;
-    display: grid;
-    gap: 14px;
-  }
-
-  .faq-item {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    transition: all .4s cubic-bezier(0.22, 1, 0.36, 1);
-    box-shadow: var(--shadow-sm);
-  }
-  .faq-item:hover {
-    border-color: var(--border-strong);
-    box-shadow: var(--shadow-md);
-  }
-
-  .faq-q {
-    width: 100%;
-    background: transparent;
-    border: none;
-    padding: 22px 28px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--text);
-    text-align: left;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    transition: color .25s;
-  }
-  .faq-q:hover { color: var(--violet); }
-
-  .faq-icon {
-    flex-shrink: 0;
-    width: 24px; height: 24px;
-    position: relative;
-    transition: transform .4s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .faq-icon::before,
-  .faq-icon::after {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    background: var(--violet);
-    border-radius: 2px;
-    transition: transform .3s;
-  }
-  .faq-icon::before {
-    width: 14px; height: 2px;
-    transform: translate(-50%, -50%);
-  }
-  .faq-icon::after {
-    width: 2px; height: 14px;
-    transform: translate(-50%, -50%);
-  }
-  .faq-item.open .faq-icon { transform: rotate(180deg); }
-  .faq-item.open .faq-icon::after { transform: translate(-50%, -50%) scaleY(0); }
-
-  .faq-a {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height .5s cubic-bezier(0.22, 1, 0.36, 1),
-                padding .3s ease;
-    padding: 0 28px;
-    color: var(--text-muted);
-    font-size: 0.98rem;
-    line-height: 1.7;
-  }
-  .faq-item.open .faq-a {
-    max-height: 300px;
-    padding: 0 28px 24px;
-  }
-
-  /* ============ CONTACT ============ */
+  /* ============ CONTATTI ============ */
   .contact {
     text-align: center;
-    padding: 120px 0;
+    padding: 110px 0;
   }
 
   .contact-inner { max-width: 680px; margin: 0 auto; }
@@ -1050,13 +763,12 @@
   .contact .section-heading {
     margin-left: auto;
     margin-right: auto;
-    max-width: 20ch;
   }
 
   .contact p {
     color: var(--text-muted);
     max-width: 520px;
-    margin: 0 auto 40px;
+    margin: 0 auto 36px;
     font-size: 1.05rem;
   }
 
@@ -1069,7 +781,7 @@
 
   /* ============ FOOTER ============ */
   footer {
-    padding: 44px 0;
+    padding: 40px 0;
     border-top: 1px solid var(--border);
     color: var(--text-muted);
     font-size: 0.85rem;
@@ -1082,34 +794,17 @@
     flex-wrap: wrap;
     gap: 16px;
   }
-  footer .footer-mark {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-  footer .footer-mark .dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--fuchsia);
-    box-shadow: 0 0 10px var(--fuchsia);
-    animation: pulseDot 2s infinite;
-  }
-  @keyframes pulseDot {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
 
   /* ============ MOBILE ============ */
   @media (max-width: 640px) {
     .container { padding: 0 22px; }
     nav ul { gap: 2px; padding: 4px; }
     nav ul li a { padding: 7px 11px; font-size: 0.76rem; }
-    .logo { font-size: 1rem; }
-    .hero { padding: 90px 0 60px; }
+    .logo { font-size: 0.95rem; }
+    .hero { padding: 100px 0 70px; }
     section { padding: 70px 0; }
     .contact { padding: 80px 0; }
     .photo-wrap { max-width: 320px; }
-    .highlight-num { font-size: 2rem; }
   }
 </style>
 </head>
@@ -1133,7 +828,6 @@
       <li><a href="#chi-sono">Chi sono</a></li>
       <li><a href="#percorso">Percorso</a></li>
       <li><a href="#progetti">Progetti</a></li>
-      <li><a href="#faq">FAQ</a></li>
       <li><a href="#contatti">Contatti</a></li>
     </ul>
   </div>
@@ -1144,42 +838,18 @@
   <!-- HERO -->
   <section class="hero" aria-labelledby="hero-title">
     <div class="container">
-      <div class="hero-badge">
-        <span class="hero-badge-tag">● Disponibile</span>
-        <span>Ciao, sono Nicole 👋</span>
-        <span>Per nuovi progetti</span>
-      </div>
       <h1 id="hero-title">
         Sviluppo <span class="grad">siti web</span><br>
-        e <span class="grad">web app</span> su misura.
+        e <span class="grad">web app</span> su misura
       </h1>
       <p class="hero-desc">
-        Dalla prima idea alla messa online.
-        Siti, applicazioni e app curate nei dettagli, fatte per durare.
+        Sono Nicole, software engineer. Lavoro con piccole attività,
+        professionisti e aziende che hanno bisogno di qualcosa di solido
+        e fatto bene.
       </p>
       <div class="cta-group">
-        <a href="#contatti" class="btn btn-primary magnetic">Parliamo del tuo progetto</a>
-        <a href="#progetti" class="btn btn-secondary magnetic">Vedi i progetti</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- HIGHLIGHTS / NUMERI -->
-  <section class="highlights" aria-label="Punti di forza">
-    <div class="container">
-      <div class="highlights-grid">
-        <div class="highlight reveal">
-          <div class="highlight-num">End-to-end</div>
-          <div class="highlight-label">Dal design alla messa online</div>
-        </div>
-        <div class="highlight reveal">
-          <div class="highlight-num">Web + Mobile</div>
-          <div class="highlight-label">Siti, web app e app Flutter</div>
-        </div>
-        <div class="highlight reveal">
-          <div class="highlight-num">24h</div>
-          <div class="highlight-label">Tempo di risposta</div>
-        </div>
+        <a href="#contatti" class="btn btn-primary magnetic">Scrivimi</a>
+        <a href="#progetti" class="btn btn-secondary magnetic">Guarda i progetti</a>
       </div>
     </div>
   </section>
@@ -1187,22 +857,24 @@
   <!-- CHI SONO con FOTO -->
   <section id="chi-sono" aria-labelledby="chi-sono-title">
     <div class="container">
-      <div class="section-label reveal">Chi sono</div>
+      <div class="section-title reveal">Chi sono</div>
       <h2 class="section-heading reveal" id="chi-sono-title">
-        Un approccio <span class="grad">essenziale</span>, un risultato curato.
+        Un po' di me, senza troppi giri di parole
       </h2>
 
       <div class="about-grid">
         <div class="about-text reveal">
           <p>
-            Mi chiamo <strong>Nicole</strong>, sono <strong>software engineer</strong>
-            e sviluppo siti web, web app e app mobile seguendo ogni progetto
-            dal design all'implementazione.
+            Mi chiamo <strong>Nicole</strong> e faccio la <strong>software engineer</strong>.
+            Ho studiato Ingegneria Informatica a Modena e oggi lavoro in una software
+            house che si occupa di automazione industriale.
           </p>
           <p>
-            Il mio approccio è semplice: <strong>capire il problema reale del cliente</strong>
-            e costruire la soluzione più adatta, senza complicazioni inutili.
-            Il risultato? Qualcosa che funziona davvero e che è facile da usare.
+            Nel tempo libero sviluppo <strong>siti, web app e app mobile</strong> per
+            chi ha bisogno di qualcosa di concreto. Mi piace capire come lavora
+            davvero il cliente prima di scrivere una riga di codice — perché
+            la soluzione giusta è quella che risolve un problema vero, non quella
+            più alla moda.
           </p>
           <div class="skills-grid" aria-label="Competenze tecniche">
             <span class="skill-pill">C#</span>
@@ -1224,10 +896,6 @@
               <img src="FOTO-NICOLE.jpeg" alt="Nicole Farioli">
             </div>
           </div>
-          <div class="photo-badge">
-            <span class="dot"></span>
-            Disponibile per freelance
-          </div>
         </div>
       </div>
     </div>
@@ -1236,37 +904,31 @@
   <!-- COME LAVORO -->
   <section id="come-lavoro" aria-labelledby="come-lavoro-title">
     <div class="container">
-      <div class="section-label reveal">Come lavoro</div>
+      <div class="section-title reveal">Come lavoro</div>
       <h2 class="section-heading reveal" id="come-lavoro-title">
-        Tre passi, <span class="grad">zero sorprese</span>
+        Dal primo messaggio alla consegna
       </h2>
-      <p class="section-intro reveal">
-        Un metodo chiaro per portarti dal problema alla soluzione.
-      </p>
 
       <div class="steps-grid">
         <div class="step reveal">
-          <span class="step-num">01</span>
           <h3>Ascolto</h3>
           <p>
-            Capisco cosa ti serve davvero, il tuo contesto e i tuoi obiettivi.
-            Niente tecnicismi inutili: solo domande mirate.
+            Ti chiedo cosa ti serve, come lavori oggi e cosa vorresti migliorare.
+            Senza tecnicismi: prima capisco, poi parlo io.
           </p>
         </div>
         <div class="step reveal">
-          <span class="step-num">02</span>
-          <h3>Progetto</h3>
+          <h3>Proposta</h3>
           <p>
-            Ti propongo una soluzione chiara con tempi, costi e funzionalità.
-            Sai esattamente cosa riceverai, prima di iniziare.
+            Ti scrivo cosa propongo, con tempi e costi chiari. Se qualcosa
+            non ti convince, si cambia prima di iniziare.
           </p>
         </div>
         <div class="step reveal">
-          <span class="step-num">03</span>
-          <h3>Realizzo</h3>
+          <h3>Sviluppo</h3>
           <p>
-            Sviluppo, testo e metto online. Ti consegno tutto funzionante
-            e ti spiego come gestirlo in autonomia.
+            Costruisco, testo e metto online. Ti spiego come usarlo e resto
+            disponibile per dubbi o sistemazioni.
           </p>
         </div>
       </div>
@@ -1276,26 +938,23 @@
   <!-- PERCORSO -->
   <section id="percorso" aria-labelledby="percorso-title">
     <div class="container">
-      <div class="section-label reveal">Percorso</div>
+      <div class="section-title reveal">Percorso</div>
       <h2 class="section-heading reveal" id="percorso-title">
-        Formazione e <span class="grad">crescita</span> professionale
+        Cosa ho fatto finora
       </h2>
-      <p class="section-intro reveal">
-        Dalle aule universitarie al mondo del lavoro.
-      </p>
 
       <div class="timeline">
 
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
-            <span class="timeline-date">2025 — Presente</span>
+            <span class="timeline-date">2025 — oggi</span>
             <h3 class="timeline-title">Software Engineer</h3>
             <p class="timeline-place">Technosource S.r.l. — Sassuolo (MO)</p>
             <p class="timeline-desc">
               Software house di automazione industriale. Sviluppo in C#/.NET
               con database SQL, revamping di software legacy in VB6 e app
-              mobile in Flutter. Realizzazione del sito aziendale con WordPress.
+              mobile in Flutter. Mi sono occupata anche del sito aziendale.
             </p>
           </div>
         </div>
@@ -1303,12 +962,12 @@
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
-            <span class="timeline-date">02/2025 — 05/2025</span>
+            <span class="timeline-date">Feb — Mag 2025</span>
             <h3 class="timeline-title">Analista Junior Tecnico/Funzionale</h3>
             <p class="timeline-place">Accenture Italia — Verona</p>
             <p class="timeline-desc">
               Analisi funzionale di processi end-to-end in ambito Financial
-              Services per clienti bancari e assicurativi europei. Raccolta
+              Services, per clienti bancari e assicurativi europei. Raccolta
               requisiti e supporto all'implementazione.
             </p>
           </div>
@@ -1317,13 +976,13 @@
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
-            <span class="timeline-date">03/2024 — 11/2024</span>
-            <h3 class="timeline-title">Esperienza all'estero</h3>
-            <p class="timeline-place">Mitolo Winery & Kicco Roaster — Australia</p>
+            <span class="timeline-date">Mar — Nov 2024</span>
+            <h3 class="timeline-title">Un anno in Australia</h3>
+            <p class="timeline-place">Mitolo Winery & Kicco Roaster — McLaren Vale</p>
             <p class="timeline-desc">
-              Front of house e barista in un contesto internazionale: gestione
-              clienti in inglese, organizzazione eventi e lavoro in team ad
-              alto ritmo.
+              Front of house e barista in una cantina e in una torrefazione.
+              Un'esperienza fuori dal mondo tech che mi ha insegnato a
+              gestire clienti e situazioni impreviste.
             </p>
           </div>
         </div>
@@ -1336,8 +995,8 @@
             <p class="timeline-place">Università di Modena e Reggio Emilia</p>
             <p class="timeline-desc">
               Tesi sull'adozione degli NFT nei marchi di moda di lusso.
-              Programmazione (C++, Java, Python), basi di dati, ingegneria
-              del software, reti e sicurezza.
+              Basi solide di programmazione (C++, Java, Python), database,
+              ingegneria del software e reti.
             </p>
           </div>
         </div>
@@ -1346,10 +1005,11 @@
           <div class="timeline-dot"></div>
           <div class="timeline-card">
             <span class="timeline-date">2013 — 2018</span>
-            <h3 class="timeline-title">Diploma di Liceo Scientifico</h3>
+            <h3 class="timeline-title">Liceo Scientifico</h3>
             <p class="timeline-place">Liceo Formiggini — Sassuolo (MO)</p>
             <p class="timeline-desc">
-              Formazione scientifica con focus su matematica, fisica e scienze.
+              Cinque anni tra matematica, fisica e scienze. È qui che ho
+              capito che mi piaceva risolvere problemi.
             </p>
           </div>
         </div>
@@ -1361,34 +1021,31 @@
   <!-- PROGETTI -->
   <section id="progetti" aria-labelledby="progetti-title">
     <div class="container">
-      <div class="section-label reveal">Progetti</div>
+      <div class="section-title reveal">Progetti</div>
       <h2 class="section-heading reveal" id="progetti-title">
-        Progetti <span class="grad">reali</span>, soluzioni concrete
+        Cose che ho costruito
       </h2>
-      <p class="section-intro reveal">
-        Una selezione di lavori sviluppati da me, dal design all'implementazione.
-      </p>
 
       <div class="projects">
         <article class="project reveal">
           <div class="project-header">
             <h3>Walletly — App di finanza personale</h3>
-            <span class="project-tag">Progetto personale</span>
+            <span class="project-tag">Progetto mio</span>
           </div>
           <p class="project-desc">
-            App mobile-first per il controllo delle spese personali e familiari.
-            Traccia stipendio, spese fisse e variabili, gestisce budget per categoria,
-            obiettivi di risparmio e prevede il saldo di fine mese.
+            Un'app per tenere sotto controllo stipendio, spese fisse e variabili,
+            budget per categoria e obiettivi di risparmio. Con previsione del
+            saldo di fine mese.
           </p>
 
-          <div class="project-subtitle">Funzionalità principali</div>
+          <div class="project-subtitle">Cosa fa</div>
           <ul>
             <li>Gestione stipendio con accredito automatico simulato</li>
             <li>Spese fisse ricorrenti e variabili con categorie</li>
             <li>Distinzione bancomat vs carta di credito</li>
             <li>Budget per categoria con alert allo sforamento</li>
             <li>Obiettivi di risparmio con versamento mensile</li>
-            <li>Previsione saldo fine mese</li>
+            <li>Previsione saldo di fine mese</li>
             <li>Grafici: torta categorie, liquidità, confronto mensile</li>
             <li>Blocco biometrico (Face ID / impronta)</li>
             <li>Promemoria push per scadenze</li>
@@ -1403,20 +1060,20 @@
             <span class="stack-item">Push notifications</span>
             <span class="stack-item">Biometria</span>
           </div>
-          <div class="project-role">Sviluppata interamente da me, dal design all'implementazione.</div>
+          <div class="project-role">Sviluppata da me dall'inizio alla fine: design e codice.</div>
         </article>
 
         <article class="project reveal">
           <div class="project-header">
-            <h3>Web app per la gestione di schede palestra e appuntamenti</h3>
-            <span class="project-tag">Progetto cliente</span>
+            <h3>Web app per un personal trainer</h3>
+            <span class="project-tag">Cliente</span>
           </div>
           <p class="project-desc">
-            Web app sviluppata per un personal trainer, per gestire le schede di
-            allenamento dei clienti e l'agenda degli appuntamenti in un unico posto.
+            Una web app per gestire le schede di allenamento dei clienti
+            e l'agenda degli appuntamenti in un unico posto, da browser.
           </p>
 
-          <div class="project-subtitle">Funzionalità principali</div>
+          <div class="project-subtitle">Cosa fa</div>
           <ul>
             <li>Creazione e gestione schede di allenamento personalizzate</li>
             <li>Calendario appuntamenti con vista giornaliera e settimanale</li>
@@ -1430,71 +1087,9 @@
             <span class="stack-item">PostgreSQL</span>
           </div>
           <div class="project-role">
-            Sviluppata da me su richiesta del cliente, dalla raccolta requisiti alla consegna.
+            Seguita dalla raccolta requisiti fino alla consegna.
           </div>
         </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" aria-labelledby="faq-title">
-    <div class="container">
-      <div class="section-label reveal" style="justify-content:center;">Domande frequenti</div>
-      <h2 class="section-heading reveal" id="faq-title" style="margin-left:auto;margin-right:auto;text-align:center;">
-        Le risposte alle <span class="grad">domande più comuni</span>
-      </h2>
-      <p class="section-intro reveal" style="margin-left:auto;margin-right:auto;text-align:center;">
-        Se non trovi quello che cerchi, scrivimi direttamente.
-      </p>
-
-      <div class="faq-list">
-        <div class="faq-item reveal">
-          <button class="faq-q" aria-expanded="false">
-            Quanto costa un sito o una web app?
-            <span class="faq-icon"></span>
-          </button>
-          <div class="faq-a">
-            Dipende dalla complessità. Un sito vetrina parte da poche centinaia di euro,
-            una web app su misura richiede un preventivo personalizzato. Parliamone:
-            dopo una chiacchierata ti do una stima chiara, senza costi nascosti.
-          </div>
-        </div>
-
-        <div class="faq-item reveal">
-          <button class="faq-q" aria-expanded="false">
-            Quanto tempo serve per realizzare un progetto?
-            <span class="faq-icon"></span>
-          </button>
-          <div class="faq-a">
-            Un sito vetrina richiede 1–2 settimane. Una web app o un'app mobile
-            da 1 a 3 mesi, in base alle funzionalità. Ti do sempre una timeline
-            chiara prima di iniziare.
-          </div>
-        </div>
-
-        <div class="faq-item reveal">
-          <button class="faq-q" aria-expanded="false">
-            Posso gestire il sito in autonomia dopo la consegna?
-            <span class="faq-icon"></span>
-          </button>
-          <div class="faq-a">
-            Sì. Ti consegno tutto documentato e ti mostro come fare le modifiche
-            di base. Se preferisci, posso anche occuparmi io della manutenzione.
-          </div>
-        </div>
-
-        <div class="faq-item reveal">
-          <button class="faq-q" aria-expanded="false">
-            Offri assistenza dopo la consegna?
-            <span class="faq-icon"></span>
-          </button>
-          <div class="faq-a">
-            Sì, offro un periodo di assistenza gratuito dopo la consegna per
-            eventuali bug o chiarimenti. Poi si può concordare un piano di
-            manutenzione se serve.
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -1503,13 +1098,13 @@
   <section id="contatti" class="contact" aria-labelledby="contatti-title">
     <div class="container">
       <div class="contact-inner">
-        <div class="section-label reveal" style="justify-content:center;">Contatti</div>
-        <h2 class="section-heading reveal" id="contatti-title">
-          Hai un progetto <span class="grad">in mente?</span>
+        <div class="section-title reveal">Contatti</div>
+        <h2 class="section-heading reveal" id="contatti-title" style="margin-left:auto;margin-right:auto;">
+          Hai qualcosa in mente?
         </h2>
         <p class="reveal">
-          Scrivimi due righe e ti rispondo entro 24 ore.
-          Ne parliamo senza impegno.
+          Scrivimi due righe su cosa ti serve. Ti rispondo di solito
+          entro un giorno, anche solo per capire se posso aiutarti.
         </p>
         <div class="contact-links reveal">
 
@@ -1551,53 +1146,47 @@
 
 <footer>
   <div class="container">
-    <span>© <span id="year">2025</span> Nicole Farioli — Software Engineer</span>
-    <span class="footer-mark"><span class="dot"></span> Made in Italy</span>
+    <span>© <span id="year">2025</span> Nicole Farioli</span>
+    <span>Software Engineer</span>
   </div>
 </footer>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  /* Scroll progress */
   const progress = document.getElementById('scrollProgress');
   window.addEventListener('scroll', () => {
     const h = document.documentElement.scrollHeight - window.innerHeight;
-    const p = (window.scrollY / h) * 100;
-    progress.style.width = p + '%';
+    progress.style.width = (window.scrollY / h) * 100 + '%';
   }, { passive: true });
 
-  /* Nav scrolled */
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 20);
   }, { passive: true });
 
-  /* Reveal */
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        setTimeout(() => e.target.classList.add('visible'), i * 50);
         revealObserver.unobserve(e.target);
       }
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -80px 0px' });
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-  /* Magnetic buttons */
   document.querySelectorAll('.magnetic').forEach(btn => {
     btn.addEventListener('mousemove', (e) => {
       const rect = btn.getBoundingClientRect();
       const x = e.clientX - rect.left - rect.width / 2;
       const y = e.clientY - rect.top - rect.height / 2;
-      btn.style.transform = `translate(${x * 0.12}px, ${y * 0.2}px)`;
+      btn.style.transform = `translate(${x * 0.1}px, ${y * 0.15}px)`;
     });
     btn.addEventListener('mouseleave', () => {
       btn.style.transform = '';
     });
   });
 
-  /* Nav attiva */
   const sections = document.querySelectorAll('main section[id]');
   const navLinks = document.querySelectorAll('nav a[href^="#"]');
   const obs = new IntersectionObserver((entries) => {
@@ -1610,22 +1199,6 @@
     });
   }, { rootMargin: '-40% 0px -55% 0px' });
   sections.forEach(s => obs.observe(s));
-
-  /* FAQ accordion */
-  document.querySelectorAll('.faq-item').forEach(item => {
-    const btn = item.querySelector('.faq-q');
-    btn.addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => {
-        i.classList.remove('open');
-        i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
-      });
-      if (!isOpen) {
-        item.classList.add('open');
-        btn.setAttribute('aria-expanded', 'true');
-      }
-    });
-  });
 </script>
 
 </body>
