@@ -458,8 +458,29 @@
 
   /* ============ HERO ============ */
   .hero {
-    padding: 140px 0 90px;
+    padding: 72px 0 60px;
     text-align: center;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .hero-photo {
+    order: -1;
+    animation: fadeInUp 1s .2s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .hero .photo-wrap { max-width: 300px; }
+
+  @media (min-width: 900px) {
+    .hero { padding: 110px 0 90px; text-align: left; }
+    .hero .hero-text h1 { font-size: clamp(2.5rem, 4.2vw, 3.6rem); }
+    .hero-grid { grid-template-columns: 1.25fr 0.75fr; gap: 56px; }
+    .hero-photo { order: 0; }
+    .hero .photo-wrap { max-width: 400px; margin: 0 0 0 auto; }
+    .hero .hero-desc { margin-left: 0; margin-right: 0; }
+    .hero .cta-group { justify-content: flex-start; }
   }
 
   .hero h1 {
@@ -872,6 +893,63 @@
     background: var(--grad-main);
     border-color: transparent;
     transform: translateY(-2px);
+  }
+
+  .skill-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 560px) {
+    .skill-cards { grid-template-columns: 1fr 1fr; }
+  }
+  .skill-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 22px 24px;
+    box-shadow: var(--shadow-sm);
+  }
+  .skill-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-strong);
+  }
+  .skill-card-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .skill-card-icon {
+    width: 38px; height: 38px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: rgba(139, 92, 246, 0.1);
+    color: var(--violet);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .4s ease, color .4s ease;
+  }
+  .skill-card-icon svg { width: 18px; height: 18px; }
+  .skill-card:hover .skill-card-icon { background: var(--grad-main); color: #fff; }
+  .skill-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+  .skill-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .skill-card .skill-pill {
+    padding: 6px 13px;
+    font-size: 0.8rem;
+    box-shadow: none;
   }
 
   /* ============ COME LAVORO ============ */
@@ -1415,7 +1493,8 @@
 
     .about-grid { gap: 36px; }
     .about-text p { font-size: 1rem; }
-    .photo-wrap { max-width: 280px; }
+    .hero .photo-wrap { max-width: 200px; }
+    .hero-grid { gap: 28px; }
 
     .timeline-item { padding-left: 44px; margin-bottom: 20px; }
     .timeline::before { left: 14px; }
@@ -1447,7 +1526,7 @@
   body, nav, footer, .photo-inner {
     transition: background .4s ease, border-color .4s ease, color .4s ease;
   }
-  .btn-secondary, .step, .timeline-card, .project, .skill-pill, .stack-item, .service {
+  .btn-secondary, .step, .timeline-card, .project, .skill-pill, .stack-item, .service, .skill-card {
     transition: background .4s ease, border-color .4s ease, color .4s ease,
                 transform .45s cubic-bezier(0.22, 1, 0.36, 1),
                 box-shadow .45s cubic-bezier(0.22, 1, 0.36, 1);
@@ -1510,19 +1589,33 @@
 
   <!-- HERO -->
   <section class="hero" aria-labelledby="hero-title">
-    <div class="container">
-      <h1 id="hero-title" data-i18n-html="hero_title">
-        Sviluppo <span class="grad">siti web</span><br>
-        e <span class="grad">web app</span> su misura
-      </h1>
-      <p class="hero-desc" data-i18n="hero_desc">
-        Sono Nicole, software engineer. Lavoro con piccole attività,
-        professionisti e aziende che hanno bisogno di qualcosa di solido
-        e fatto bene.
-      </p>
-      <div class="cta-group">
-        <a href="#contatti" class="btn btn-primary magnetic" data-i18n="cta_contact">Scrivimi</a>
-        <a href="#progetti" class="btn btn-secondary magnetic" data-i18n="cta_projects">Guarda i progetti</a>
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <h1 id="hero-title" data-i18n-html="hero_title">
+          Sviluppo <span class="grad">siti web</span><br>
+          e <span class="grad">web app</span> su misura
+        </h1>
+        <p class="hero-desc" data-i18n="hero_desc">
+          Sono Nicole, software engineer. Lavoro con piccole attività,
+          professionisti e aziende che hanno bisogno di qualcosa di solido
+          e fatto bene.
+        </p>
+        <div class="cta-group">
+          <a href="#contatti" class="btn btn-primary magnetic" data-i18n="cta_contact">Scrivimi</a>
+          <a href="#progetti" class="btn btn-secondary magnetic" data-i18n="cta_projects">Guarda i progetti</a>
+        </div>
+      </div>
+
+      <div class="hero-photo">
+        <div class="photo-wrap">
+          <div class="photo-deco photo-deco-1"></div>
+          <div class="photo-deco photo-deco-2"></div>
+          <div class="photo-frame">
+            <div class="photo-inner">
+              <img src="FOTO-NICOLE.jpeg" alt="Nicole Farioli" width="800" height="1000" fetchpriority="high" decoding="async">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1660,24 +1753,62 @@
             la soluzione giusta è quella che risolve un problema vero, non quella
             più alla moda.
           </p>
-          <div class="skills-grid" aria-label="Competenze tecniche">
-            <span class="skill-pill">C#</span>
-            <span class="skill-pill">.NET</span>
-            <span class="skill-pill">SQL</span>
-            <span class="skill-pill">Flutter</span>
-            <span class="skill-pill">Firebase</span>
-            <span class="skill-pill">React</span>
-            <span class="skill-pill">Node.js</span>
-            <span class="skill-pill">WordPress</span>
-          </div>
         </div>
 
-        <div class="photo-wrap reveal">
-          <div class="photo-deco photo-deco-1"></div>
-          <div class="photo-deco photo-deco-2"></div>
-          <div class="photo-frame">
-            <div class="photo-inner">
-              <img src="FOTO-NICOLE.jpeg" alt="Nicole Farioli" width="800" height="1000" loading="lazy" decoding="async">
+        <div class="skill-cards reveal" aria-label="Competenze">
+          <div class="skill-card">
+            <div class="skill-card-head">
+              <span class="skill-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>
+              </span>
+              <h3 data-i18n="skill1_title">Web</h3>
+            </div>
+            <div class="skill-card-tags">
+              <span class="skill-pill">React</span>
+              <span class="skill-pill">Node.js</span>
+              <span class="skill-pill">WordPress</span>
+              <span class="skill-pill">HTML / CSS</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-card-head">
+              <span class="skill-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg>
+              </span>
+              <h3 data-i18n="skill2_title">Mobile</h3>
+            </div>
+            <div class="skill-card-tags">
+              <span class="skill-pill">Flutter</span>
+              <span class="skill-pill">Firebase</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-card-head">
+              <span class="skill-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg>
+              </span>
+              <h3 data-i18n="skill3_title">Backend e dati</h3>
+            </div>
+            <div class="skill-card-tags">
+              <span class="skill-pill">C#</span>
+              <span class="skill-pill">.NET</span>
+              <span class="skill-pill">SQL</span>
+              <span class="skill-pill">PostgreSQL</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-card-head">
+              <span class="skill-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </span>
+              <h3 data-i18n="skill4_title">Lingue</h3>
+            </div>
+            <div class="skill-card-tags">
+              <span class="skill-pill" data-i18n="skill4_it">Italiano</span>
+              <span class="skill-pill" data-i18n="skill4_en">Inglese</span>
             </div>
           </div>
         </div>
@@ -2087,6 +2218,12 @@
       about_heading: "Un po' di me, senza troppi giri di parole",
       about_p1: 'Mi chiamo <strong>Nicole</strong> e faccio la <strong>software engineer</strong>. Ho studiato Ingegneria Informatica a Modena e oggi lavoro in una software house che si occupa di automazione industriale.',
       about_p2: 'Nel tempo libero sviluppo <strong>siti, web app e app mobile</strong> per chi ha bisogno di qualcosa di concreto. Mi piace capire come lavora davvero il cliente prima di scrivere una riga di codice — perché la soluzione giusta è quella che risolve un problema vero, non quella più alla moda.',
+      skill1_title: "Web",
+      skill2_title: "Mobile",
+      skill3_title: "Backend e dati",
+      skill4_title: "Lingue",
+      skill4_it: "Italiano",
+      skill4_en: "Inglese",
 
       how_title: "Come lavoro",
       how_heading: "Dal primo messaggio alla consegna",
@@ -2220,6 +2357,12 @@
       about_heading: "A bit about me, no fluff",
       about_p1: 'My name is <strong>Nicole</strong> and I work as a <strong>software engineer</strong>. I studied Computer Engineering in Modena and I currently work in a software house focused on industrial automation.',
       about_p2: 'In my free time I build <strong>websites, web apps and mobile apps</strong> for people who need something real. I like understanding how a client actually works before writing a single line of code — because the right solution is the one that solves a real problem, not the trendiest one.',
+      skill1_title: "Web",
+      skill2_title: "Mobile",
+      skill3_title: "Backend & data",
+      skill4_title: "Languages",
+      skill4_it: "Italian",
+      skill4_en: "English",
 
       how_title: "How I work",
       how_heading: "From first message to delivery",
@@ -2424,13 +2567,14 @@
   });
 
   // Nav attiva
-  const sections = document.querySelectorAll('main section[id]');
+  // Include anche la hero (senza id): quando è a schermo nessuna voce resta evidenziata
+  const sections = document.querySelectorAll('main section');
   const navLinks = document.querySelectorAll('nav ul a[href^="#"]');
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
         navLinks.forEach(a => a.removeAttribute('aria-current'));
-        const active = document.querySelector(`nav a[href="#${e.target.id}"]`);
+        const active = e.target.id && document.querySelector(`nav ul a[href="#${e.target.id}"]`);
         if (active) active.setAttribute('aria-current', 'true');
       }
     });
