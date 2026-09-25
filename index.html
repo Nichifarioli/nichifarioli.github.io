@@ -45,8 +45,17 @@
 
     const savedLang = localStorage.getItem('lang') || 'it';
     document.documentElement.setAttribute('lang', savedLang);
+
+    /* Se la lingua non è l'italiano, nasconde la pagina finché le traduzioni
+       non sono applicate (evita il flash del testo italiano).
+       Sicurezza: la mostra comunque dopo 1,5 s se qualcosa va storto. */
+    if (savedLang !== 'it') {
+      document.documentElement.classList.add('i18n-pending');
+      setTimeout(() => document.documentElement.classList.remove('i18n-pending'), 1500);
+    }
   })();
 </script>
+<style>html.i18n-pending body { visibility: hidden; }</style>
 
 <style>
   /* ============ FONT (caricati dal sito, non da Google) ============ */
@@ -2029,6 +2038,8 @@
   ============================================================ */
   const translations = {
     it: {
+      meta_title: "Nicole Farioli — Siti web e web app su misura | Modena, Sassuolo",
+      meta_desc: "Sviluppatrice freelance a Sassuolo (MO): siti web, web app e app mobile per piccole attività e professionisti. Preventivo gratuito.",
       skip: "Salta al contenuto",
       nav_services: "Servizi",
       nav_about: "Chi sono",
@@ -2160,6 +2171,8 @@
       footer_privacy: "Nessun cookie né tracciamento: il sito ricorda solo tema e lingua scelti, sul tuo dispositivo."
     },
     en: {
+      meta_title: "Nicole Farioli — Custom websites and web apps | Modena, Italy",
+      meta_desc: "Freelance developer based in Sassuolo (Modena, Italy): websites, web apps and mobile apps for small businesses and professionals. Free quote.",
       skip: "Skip to content",
       nav_services: "Services",
       nav_about: "About",
@@ -2326,6 +2339,13 @@
     });
     document.getElementById('waFloat').setAttribute('aria-label',
       lang === 'it' ? 'Scrivimi su WhatsApp' : 'Message me on WhatsApp');
+
+    // Titolo della scheda e descrizione nella lingua scelta
+    document.title = dict.meta_title;
+    document.querySelector('meta[name="description"]').setAttribute('content', dict.meta_desc);
+
+    // Traduzioni applicate: mostra la pagina
+    document.documentElement.classList.remove('i18n-pending');
 
     localStorage.setItem('lang', lang);
     currentLang = lang;

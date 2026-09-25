@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pagina non trovata — Nicole Farioli</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#fefbff">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='70' font-weight='700'>NF</text></svg>">
+
+<script>
+  /* Tema e lingua salvati dal sito principale */
+  (function() {
+    let theme = null, lang = 'it';
+    try {
+      theme = localStorage.getItem('theme');
+      lang = localStorage.getItem('lang') || 'it';
+    } catch (e) {}
+    if (!theme) theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.setAttribute('lang', lang);
+  })();
+</script>
+
+<style>
+  /* Percorsi assoluti: la 404 può essere mostrata su qualsiasi URL */
+  @font-face {
+    font-display: swap;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/inter-v20-latin-regular.woff2') format('woff2');
+  }
+  @font-face {
+    font-display: swap;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    src: url('/fonts/inter-v20-latin-500.woff2') format('woff2');
+  }
+  @font-face {
+    font-display: swap;
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 700;
+    src: url('/fonts/space-grotesk-v22-latin-700.woff2') format('woff2');
+  }
+
+  :root {
+    --bg: #fefbff;
+    --bg-card: #ffffff;
+    --text: #1a0f2e;
+    --text-muted: #6b5b8a;
+    --violet: #8b5cf6;
+    --border-strong: rgba(139, 92, 246, 0.28);
+    --btn-secondary-bg: rgba(255, 255, 255, 0.9);
+    --grad-main: linear-gradient(135deg, #8b5cf6 0%, #e91e63 50%, #0ea5e9 100%);
+    --shadow-sm: 0 4px 16px rgba(139, 92, 246, 0.08);
+    --shadow-glow: 0 20px 60px -15px rgba(233, 30, 99, 0.35);
+    --blob-1: #c4b5fd;
+    --blob-2: #f9a8d4;
+    --blob-3: #a5f3fc;
+    --blob-opacity: 0.28;
+  }
+  [data-theme="dark"] {
+    --bg: #0f0a1a;
+    --bg-card: #1a1430;
+    --text: #f1ecff;
+    --text-muted: #a89bc2;
+    --violet: #a78bfa;
+    --border-strong: rgba(167, 139, 250, 0.35);
+    --btn-secondary-bg: rgba(255, 255, 255, 0.04);
+    --grad-main: linear-gradient(135deg, #a78bfa 0%, #f472b6 50%, #38bdf8 100%);
+    --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.3);
+    --shadow-glow: 0 20px 60px -15px rgba(244, 114, 182, 0.4);
+    --blob-1: #5b21b6;
+    --blob-2: #be185d;
+    --blob-3: #0369a1;
+    --blob-opacity: 0.35;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: .01ms !important;
+      transition-duration: .01ms !important;
+    }
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--violet);
+    outline-offset: 4px;
+    border-radius: 6px;
+  }
+
+  .blob {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(110px);
+    opacity: var(--blob-opacity);
+    z-index: 0;
+    pointer-events: none;
+  }
+  .blob-1 { width: 480px; height: 480px; background: var(--blob-1); top: -160px; left: -160px; animation: float1 24s ease-in-out infinite; }
+  .blob-2 { width: 420px; height: 420px; background: var(--blob-2); bottom: -140px; right: -140px; animation: float2 28s ease-in-out infinite; }
+  .blob-3 { width: 360px; height: 360px; background: var(--blob-3); top: 40%; left: 55%; animation: float1 32s ease-in-out infinite; }
+  @keyframes float1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(60px, 40px) scale(1.1); }
+  }
+  @keyframes float2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-50px, -30px) scale(1.12); }
+  }
+
+  header, main { position: relative; z-index: 2; }
+
+  header {
+    max-width: 1120px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 22px 32px;
+  }
+  .logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-mark {
+    width: 32px; height: 32px;
+    border-radius: 10px;
+    background: var(--grad-main);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 24px 80px;
+  }
+
+  .code {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(6rem, 22vw, 11rem);
+    line-height: 1;
+    letter-spacing: -0.06em;
+    background: var(--grad-main);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradShift 6s ease infinite, fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    margin-bottom: 12px;
+  }
+  @keyframes gradShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    margin-bottom: 14px;
+    animation: fadeInUp 1s .1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  p {
+    color: var(--text-muted);
+    max-width: 440px;
+    margin-bottom: 36px;
+    animation: fadeInUp 1s .2s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .cta-group {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeInUp 1s .3s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 30px;
+    border-radius: 100px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: transform .3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow .3s cubic-bezier(0.22, 1, 0.36, 1), border-color .3s;
+  }
+  .btn-primary {
+    background: var(--grad-main);
+    background-size: 200% 200%;
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.25);
+    animation: gradShift 6s ease infinite;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-glow); }
+  .btn-secondary {
+    background: var(--btn-secondary-bg);
+    color: var(--text);
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-sm);
+  }
+  .btn-secondary:hover { transform: translateY(-2px); border-color: var(--violet); }
+  .btn svg { flex-shrink: 0; }
+
+  @media (max-width: 640px) {
+    header { padding: 18px 20px; }
+    .cta-group { flex-direction: column; width: 100%; max-width: 320px; }
+    .btn { width: 100%; }
+    .blob { animation: none; filter: blur(80px); width: 300px; height: 300px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
+<header>
+  <a href="/" class="logo">
+    <span class="logo-mark">NF</span>
+    Nicole Farioli
+  </a>
+</header>
+
+<main>
+  <div class="code" aria-hidden="true">404</div>
+  <h1 data-i18n="title">Questa pagina non esiste</h1>
+  <p data-i18n="desc">
+    Forse il link è sbagliato o la pagina è stata spostata.
+    Nessun problema: dalla home trovi tutto quello che cerchi.
+  </p>
+  <div class="cta-group">
+    <a href="/" class="btn btn-primary">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5M11 18l-6-6 6-6"/>
+      </svg>
+      <span data-i18n="home">Torna alla home</span>
+    </a>
+    <a href="/#contatti" class="btn btn-secondary" data-i18n="contact">Scrivimi</a>
+  </div>
+</main>
+
+<script>
+  const translations = {
+    it: {
+      page_title: "Pagina non trovata — Nicole Farioli",
+      title: "Questa pagina non esiste",
+      desc: "Forse il link è sbagliato o la pagina è stata spostata. Nessun problema: dalla home trovi tutto quello che cerchi.",
+      home: "Torna alla home",
+      contact: "Scrivimi"
+    },
+    en: {
+      page_title: "Page not found — Nicole Farioli",
+      title: "This page doesn't exist",
+      desc: "The link might be wrong or the page may have moved. No worries: you'll find everything from the home page.",
+      home: "Back to home",
+      contact: "Get in touch"
+    }
+  };
+
+  const dict = translations[document.documentElement.getAttribute('lang')] || translations.it;
+  document.title = dict.page_title;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) el.textContent = dict[key];
+  });
+
+  if (document.documentElement.getAttribute('data-theme') === 'dark') {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0f0a1a');
+  }
+</script>
+
+</body>
+</html>
