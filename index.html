@@ -611,20 +611,61 @@
   }
 
   .services-cta {
-    margin-top: 36px;
-    text-align: center;
+    margin-top: 32px;
+    padding: 1.5px;
+    border-radius: var(--radius-lg);
+    background: var(--grad-main);
+    background-size: 200% 200%;
+    animation: gradShift 8s ease infinite;
+    box-shadow: var(--shadow-md);
+  }
+  .services-cta-inner {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    padding: 34px 40px;
+    border-radius: calc(var(--radius-lg) - 1.5px);
+    background: var(--bg-card);
+  }
+  .services-cta-inner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--grad-main);
+    opacity: 0.06;
+    pointer-events: none;
+  }
+  .services-cta-text { position: relative; }
+  .services-cta h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .services-cta p {
     color: var(--text-muted);
-    font-size: 1.02rem;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    max-width: 52ch;
   }
-  .services-cta a {
-    color: var(--violet);
-    font-weight: 600;
-    text-decoration: none;
-    border-bottom: 1.5px solid currentColor;
-    padding-bottom: 1px;
-    transition: color .25s;
+  .services-cta .btn { flex-shrink: 0; }
+  .services-cta .btn svg { transition: transform .35s cubic-bezier(0.22, 1, 0.36, 1); }
+  .services-cta .btn:hover svg { transform: translateX(4px); }
+
+  @media (max-width: 640px) {
+    .services-cta-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 28px 24px;
+      gap: 20px;
+    }
+    .services-cta .btn { width: 100%; }
   }
-  .services-cta a:hover { color: var(--fuchsia); }
 
   /* ============ WHATSAPP FISSO (mobile) ============ */
   .wa-float {
@@ -1368,10 +1409,23 @@
         </article>
       </div>
 
-      <p class="services-cta reveal">
-        <span data-i18n="services_cta_text">Non sai quale fa per te?</span>
-        <a href="#contatti" data-i18n="services_cta_link">Scrivimi e ne parliamo</a>
-      </p>
+      <div class="services-cta reveal">
+        <div class="services-cta-inner">
+          <div class="services-cta-text">
+            <h3 data-i18n="services_cta_text">Non sai quale fa per te?</h3>
+            <p data-i18n="services_cta_desc">
+              Raccontami cosa ti serve e capiamo insieme la soluzione giusta.
+              Nessun impegno, ti rispondo di solito entro un giorno.
+            </p>
+          </div>
+          <a href="#contatti" class="btn btn-primary magnetic">
+            <span data-i18n="services_cta_link">Parliamone</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6"/>
+            </svg>
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1793,7 +1847,8 @@
       srv4_f3: "Restyling di siti datati",
       srv4_f4: "Assistenza quando serve",
       services_cta_text: "Non sai quale fa per te?",
-      services_cta_link: "Scrivimi e ne parliamo",
+      services_cta_desc: "Raccontami cosa ti serve e capiamo insieme la soluzione giusta. Nessun impegno, ti rispondo di solito entro un giorno.",
+      services_cta_link: "Parliamone",
 
       about_title: "Chi sono",
       about_heading: "Un po' di me, senza troppi giri di parole",
@@ -1921,7 +1976,8 @@
       srv4_f3: "Redesign of outdated websites",
       srv4_f4: "Support whenever you need it",
       services_cta_text: "Not sure which one fits?",
-      services_cta_link: "Drop me a line and let's talk",
+      services_cta_desc: "Tell me what you need and we'll figure out the right solution together. No commitment, I usually reply within a day.",
+      services_cta_link: "Let's talk",
 
       about_title: "About",
       about_heading: "A bit about me, no fluff",
