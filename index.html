@@ -1176,33 +1176,100 @@
     overflow: hidden;
   }
   .phone {
-    width: 210px;
-    flex-shrink: 0;
-    padding: 7px 7px 0;
-    border-radius: 30px 30px 0 0;
+    position: relative;
+    width: 300px;
+    flex-shrink: 1;
+    min-width: 0;
+    padding: 8px 8px 0;
+    border: none;
+    border-radius: 36px 36px 0 0;
     background: #1a0f2e;
     box-shadow: var(--shadow-lg);
+    cursor: zoom-in;
+    font: inherit;
     transition: transform .5s cubic-bezier(0.22, 1, 0.36, 1);
   }
   [data-theme="dark"] .phone { background: #2a2140; }
+  .phone:focus-visible { outline-offset: 4px; border-radius: 36px 36px 0 0; }
   .phone img {
     display: block;
     width: 100%;
     height: auto;
-    aspect-ratio: 560 / 720;
+    aspect-ratio: 738 / 900;
     object-fit: cover;
     object-position: top;
-    border-radius: 24px 24px 0 0;
+    border-radius: 29px 29px 0 0;
   }
-  .phone-2 img { aspect-ratio: 560 / 640; }
+  .phone-2 img { aspect-ratio: 738 / 800; }
   .project:hover .phone { transform: translateY(-6px); }
   .project:hover .phone-2 { transform: translateY(-10px); }
 
-  @media (max-width: 640px) {
-    .project-shots { gap: 14px; padding: 24px 14px 0; }
-    .phone { width: 46%; max-width: 170px; padding: 5px 5px 0; border-radius: 22px 22px 0 0; }
-    .phone img { border-radius: 18px 18px 0 0; }
+  /* Etichetta "Ingrandisci" sopra lo screenshot */
+  .phone-zoom {
+    position: absolute;
+    top: 18px; right: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 12px;
+    border-radius: 100px;
+    background: rgba(26, 15, 46, 0.78);
+    backdrop-filter: blur(6px);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity .25s, transform .25s;
+    pointer-events: none;
   }
+  .phone:hover .phone-zoom,
+  .phone:focus-visible .phone-zoom { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 640px) {
+    .project-shots { gap: 12px; padding: 22px 12px 0; }
+    .phone { width: 50%; padding: 5px 5px 0; border-radius: 22px 22px 0 0; }
+    .phone img { border-radius: 18px 18px 0 0; }
+    .phone-zoom { opacity: 1; transform: none; top: 10px; right: 10px; padding: 6px; }
+    .phone-zoom span { display: none; }
+  }
+
+  /* Lightbox: screenshot a schermo intero */
+  .lightbox {
+    border: none;
+    padding: 0;
+    background: transparent;
+    max-width: 100vw;
+    max-height: 100vh;
+    margin: auto;
+    overflow: visible;
+  }
+  .lightbox::backdrop {
+    background: rgba(15, 10, 26, 0.82);
+    backdrop-filter: blur(6px);
+  }
+  .lightbox img {
+    display: block;
+    max-width: min(92vw, 520px);
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    border-radius: 24px;
+    box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.6);
+  }
+  .lightbox-close {
+    position: fixed;
+    top: 18px; right: 18px;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .lightbox-close:hover { background: rgba(255, 255, 255, 0.22); }
 
   .project-desc {
     color: var(--text-muted);
@@ -1881,12 +1948,20 @@
           </p>
 
           <div class="project-shots">
-            <figure class="phone">
-              <img src="img/walletly-home.webp" alt="Walletly: schermata Home con saldo del mese e previsione di fine mese" width="560" height="1136" loading="lazy" decoding="async" data-i18n-alt="proj1_shot1">
-            </figure>
-            <figure class="phone phone-2">
-              <img src="img/walletly-grafici.webp" alt="Walletly: grafici delle spese per categoria e bancomat vs carta" width="560" height="1136" loading="lazy" decoding="async" data-i18n-alt="proj1_shot2">
-            </figure>
+            <button type="button" class="phone" data-zoom>
+              <img src="img/walletly-home.webp" alt="Walletly: schermata Home con saldo del mese e previsione di fine mese" width="738" height="1496" loading="lazy" decoding="async" data-i18n-alt="proj1_shot1">
+              <span class="phone-zoom" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+                <span data-i18n="zoom">Ingrandisci</span>
+              </span>
+            </button>
+            <button type="button" class="phone phone-2" data-zoom>
+              <img src="img/walletly-grafici.webp" alt="Walletly: grafici delle spese per categoria e bancomat vs carta" width="738" height="1496" loading="lazy" decoding="async" data-i18n-alt="proj1_shot2">
+              <span class="phone-zoom" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+                <span data-i18n="zoom">Ingrandisci</span>
+              </span>
+            </button>
           </div>
 
           <div class="project-subtitle" data-i18n="proj_features">Cosa fa</div>
@@ -2209,6 +2284,12 @@
   </div>
 </footer>
 
+<!-- Lightbox screenshot progetti -->
+<dialog class="lightbox" id="lightbox">
+  <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Chiudi">×</button>
+  <img id="lightboxImg" src="" alt="">
+</dialog>
+
 <!-- WhatsApp fisso (solo mobile) -->
 <a href="https://wa.me/393491303503" class="wa-float" id="waFloat" target="_blank" rel="noopener noreferrer" aria-label="Scrivimi su WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -2318,6 +2399,7 @@
       proj1_tag: "Progetto mio",
       proj1_shot1: "Walletly: schermata Home con saldo del mese e previsione di fine mese",
       proj1_shot2: "Walletly: grafici delle spese per categoria e bancomat vs carta",
+      zoom: "Ingrandisci",
       proj1_desc: "Un'app per tenere sotto controllo stipendio, spese fisse e variabili, budget per categoria e obiettivi di risparmio. Con previsione del saldo di fine mese.",
       proj_features: "Cosa fa",
       proj1_f1: "Gestione stipendio con accredito automatico simulato",
@@ -2459,6 +2541,7 @@
       proj1_tag: "Personal project",
       proj1_shot1: "Walletly: Home screen with monthly balance and end-of-month forecast",
       proj1_shot2: "Walletly: spending by category and debit vs credit card charts",
+      zoom: "Zoom in",
       proj1_desc: "An app to track salary, fixed and variable expenses, category budgets and savings goals. With end-of-month balance forecast.",
       proj_features: "What it does",
       proj1_f1: "Salary tracking with simulated automatic credit",
@@ -2544,6 +2627,7 @@
     });
     document.getElementById('waFloat').setAttribute('aria-label',
       lang === 'it' ? 'Scrivimi su WhatsApp' : 'Message me on WhatsApp');
+    document.getElementById('lightboxClose').setAttribute('aria-label', lang === 'it' ? 'Chiudi' : 'Close');
 
     // Titolo della scheda e descrizione nella lingua scelta
     document.title = dict.meta_title;
@@ -2675,6 +2759,22 @@
   });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') setMenu(false);
+  });
+
+  // Lightbox: clic su uno screenshot lo apre a schermo intero
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  document.querySelectorAll('[data-zoom]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const img = btn.querySelector('img');
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.showModal();
+    });
+  });
+  document.getElementById('lightboxClose').addEventListener('click', () => lightbox.close());
+  lightbox.addEventListener('click', (e) => {
+    if (e.target !== lightboxImg) lightbox.close();
   });
 
   // WhatsApp fisso: nascosto quando la sezione Contatti è a schermo
