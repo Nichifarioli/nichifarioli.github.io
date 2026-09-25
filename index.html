@@ -922,7 +922,6 @@
 
     /* ============ FAQ ============ */
   .faq-list {
-    max-width: 900px;
     display: grid;
     gap: 18px;
     margin-top: 12px;
@@ -930,7 +929,7 @@
   .faq-item {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
     overflow: hidden;
     transition: border-color .3s, background .4s ease, box-shadow .4s ease;
@@ -959,7 +958,7 @@
     line-height: 1.4;
   }
   .faq-q:hover { color: var(--violet); }
-  .faq-q:focus-visible { outline-offset: -4px; border-radius: var(--radius); }
+  .faq-q:focus-visible { outline-offset: -4px; border-radius: var(--radius-lg); }
 
   .faq-icon {
     flex-shrink: 0;
