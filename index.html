@@ -792,7 +792,7 @@
     align-items: center;
   }
   @media (min-width: 900px) {
-    .about-grid { grid-template-columns: 1.2fr 1fr; gap: 72px; }
+    .about-grid { grid-template-columns: 1fr 1.05fr; gap: 64px; }
   }
 
   .about-text p {
@@ -1158,6 +1158,50 @@
     text-transform: uppercase;
     letter-spacing: 0.1em;
     white-space: nowrap;
+  }
+
+  /* Screenshot dei progetti in cornice da telefono */
+  .project-shots {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 28px;
+    padding: 36px 24px 0;
+    margin-bottom: 8px;
+    border-radius: var(--radius);
+    background:
+      radial-gradient(circle at 30% 20%, rgba(139, 92, 246, 0.14), transparent 60%),
+      radial-gradient(circle at 75% 80%, rgba(233, 30, 99, 0.10), transparent 60%),
+      rgba(139, 92, 246, 0.04);
+    overflow: hidden;
+  }
+  .phone {
+    width: 210px;
+    flex-shrink: 0;
+    padding: 7px 7px 0;
+    border-radius: 30px 30px 0 0;
+    background: #1a0f2e;
+    box-shadow: var(--shadow-lg);
+    transition: transform .5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  [data-theme="dark"] .phone { background: #2a2140; }
+  .phone img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 560 / 720;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 24px 24px 0 0;
+  }
+  .phone-2 img { aspect-ratio: 560 / 640; }
+  .project:hover .phone { transform: translateY(-6px); }
+  .project:hover .phone-2 { transform: translateY(-10px); }
+
+  @media (max-width: 640px) {
+    .project-shots { gap: 14px; padding: 24px 14px 0; }
+    .phone { width: 46%; max-width: 170px; padding: 5px 5px 0; border-radius: 22px 22px 0 0; }
+    .phone img { border-radius: 18px 18px 0 0; }
   }
 
   .project-desc {
@@ -1953,6 +1997,15 @@
             saldo di fine mese.
           </p>
 
+          <div class="project-shots">
+            <figure class="phone">
+              <img src="img/walletly-home.webp" alt="Walletly: schermata Home con saldo del mese e previsione di fine mese" width="560" height="1136" loading="lazy" decoding="async" data-i18n-alt="proj1_shot1">
+            </figure>
+            <figure class="phone phone-2">
+              <img src="img/walletly-grafici.webp" alt="Walletly: grafici delle spese per categoria e bancomat vs carta" width="560" height="1136" loading="lazy" decoding="async" data-i18n-alt="proj1_shot2">
+            </figure>
+          </div>
+
           <div class="project-subtitle" data-i18n="proj_features">Cosa fa</div>
           <ul>
             <li data-i18n="proj1_f1">Gestione stipendio con accredito automatico simulato</li>
@@ -2263,6 +2316,8 @@
 
       proj1_title: "Walletly — App di finanza personale",
       proj1_tag: "Progetto mio",
+      proj1_shot1: "Walletly: schermata Home con saldo del mese e previsione di fine mese",
+      proj1_shot2: "Walletly: grafici delle spese per categoria e bancomat vs carta",
       proj1_desc: "Un'app per tenere sotto controllo stipendio, spese fisse e variabili, budget per categoria e obiettivi di risparmio. Con previsione del saldo di fine mese.",
       proj_features: "Cosa fa",
       proj1_f1: "Gestione stipendio con accredito automatico simulato",
@@ -2402,6 +2457,8 @@
 
       proj1_title: "Walletly — Personal finance app",
       proj1_tag: "Personal project",
+      proj1_shot1: "Walletly: Home screen with monthly balance and end-of-month forecast",
+      proj1_shot2: "Walletly: spending by category and debit vs credit card charts",
       proj1_desc: "An app to track salary, fixed and variable expenses, category budgets and savings goals. With end-of-month balance forecast.",
       proj_features: "What it does",
       proj1_f1: "Salary tracking with simulated automatic credit",
@@ -2467,6 +2524,11 @@
     document.querySelectorAll('[data-i18n-html]').forEach(el => {
       const key = el.getAttribute('data-i18n-html');
       if (dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+
+    document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+      const key = el.getAttribute('data-i18n-alt');
+      if (dict[key] !== undefined) el.alt = dict[key];
     });
 
     // Aggiorna il bottone lingua
