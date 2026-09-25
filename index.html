@@ -1212,31 +1212,107 @@
   }
 
   /* ============ MOBILE ============ */
+  /* Bottone menu (hamburger): visibile solo sotto i 900px */
+  .menu-btn { display: none; }
+  .menu-btn span {
+    position: absolute;
+    left: 50%;
+    width: 16px; height: 1.8px;
+    border-radius: 2px;
+    background: currentColor;
+    transform: translateX(-50%);
+    transition: transform .35s cubic-bezier(0.22, 1, 0.36, 1), opacity .2s;
+  }
+  .menu-btn span:nth-child(1) { top: calc(50% - 6px); }
+  .menu-btn span:nth-child(2) { top: calc(50% - 1px); }
+  .menu-btn span:nth-child(3) { top: calc(50% + 4px); }
+  nav.menu-open .menu-btn span:nth-child(1) { transform: translateX(-50%) translateY(5px) rotate(45deg); }
+  nav.menu-open .menu-btn span:nth-child(2) { opacity: 0; }
+  nav.menu-open .menu-btn span:nth-child(3) { transform: translateX(-50%) translateY(-5px) rotate(-45deg); }
+
   @media (max-width: 900px) {
-    html { scroll-padding-top: 140px; }
-    nav .container { flex-wrap: wrap; height: auto; padding-top: 14px; padding-bottom: 12px; row-gap: 12px; }
+    html { scroll-padding-top: 84px; }
+    nav .container { height: 68px; }
+    .menu-btn { display: inline-flex; }
+
     nav ul {
-      order: 3;
-      width: 100%;
-      overflow-x: auto;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 16px; right: 16px;
+      flex-direction: column;
+      gap: 2px;
+      padding: 8px;
+      border-radius: var(--radius);
+      background: var(--bg-card);
+      border: 1px solid var(--border-strong);
+      box-shadow: var(--shadow-lg);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: opacity .25s ease, transform .3s cubic-bezier(0.22, 1, 0.36, 1), visibility .25s;
     }
-    nav ul::-webkit-scrollbar { display: none; }
-    nav ul li a { white-space: nowrap; padding: 8px 14px; font-size: 0.84rem; }
+    [data-theme="dark"] nav ul { background: var(--bg-card); }
+    nav.menu-open ul {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    nav ul li a {
+      display: block;
+      padding: 13px 18px;
+      font-size: 1rem;
+      border-radius: 14px;
+    }
   }
 
   @media (max-width: 640px) {
-    .container { padding: 0 22px; }
-    .logo { font-size: 0.9rem; }
-    .logo-mark { width: 28px; height: 28px; font-size: 0.85rem; }
-    .icon-btn { width: 36px; height: 36px; }
-    .lang-btn { padding: 0 11px; height: 36px; font-size: 0.75rem; }
-    .hero { padding: 100px 0 70px; }
-    section { padding: 70px 0; }
-    .contact { padding: 80px 0; }
-    .photo-wrap { max-width: 320px; }
+    .container { padding: 0 20px; }
+    .logo { font-size: 0.95rem; gap: 9px; }
+    .logo-mark { width: 30px; height: 30px; font-size: 0.8rem; border-radius: 9px; }
+    .nav-actions { gap: 6px; }
+    .icon-btn { width: 38px; height: 38px; }
+    .lang-btn { width: auto; padding: 0 12px; height: 38px; font-size: 0.75rem; }
+
+    .hero { padding: 56px 0 16px; }
+    .hero h1 { font-size: clamp(2.1rem, 9vw, 2.6rem); margin-bottom: 18px; }
+    .hero-desc { font-size: 1rem; margin-bottom: 30px; }
+    .cta-group { flex-direction: column; gap: 10px; }
+    .cta-group .btn { width: 100%; }
+
+    section { padding: 56px 0; }
+    .section-title { font-size: 0.78rem; margin-bottom: 10px; }
+    .section-heading { font-size: 1.75rem; margin-bottom: 24px; }
+
+    .service { padding: 26px 22px; }
+    .service-icon { width: 46px; height: 46px; border-radius: 14px; margin-bottom: 18px; }
+    .service h3 { font-size: 1.2rem; }
+    .services-grid, .steps-grid { gap: 16px; }
+    .step { padding: 26px 22px; }
+
+    .about-grid { gap: 36px; }
+    .about-text p { font-size: 1rem; }
+    .photo-wrap { max-width: 280px; }
+
+    .timeline-item { padding-left: 44px; margin-bottom: 20px; }
+    .timeline::before { left: 14px; }
+    .timeline-dot { left: 8px; }
+    .timeline-card { padding: 22px 20px; }
+
+    .projects { gap: 16px; }
+    .project { padding: 26px 22px; }
+    .project h3 { font-size: 1.3rem; }
+
+    .faq-list { gap: 12px; }
+
+    .contact { padding: 64px 0 96px; }
+    .contact-links { flex-direction: column; gap: 10px; }
+    .contact-links .btn { width: 100%; }
+
+    footer { padding: 28px 0 96px; }
+    footer .container { flex-direction: column; gap: 4px; text-align: center; }
+
     .blob { animation: none; filter: blur(80px); width: 320px; height: 320px; }
+    .wa-float { right: 16px; bottom: 16px; width: 54px; height: 54px; }
   }
 
   /* Transizioni fluide su tutti gli elementi quando cambio tema */
@@ -1266,7 +1342,7 @@
       <span class="logo-mark">NF</span>
       Nicole Farioli
     </a>
-    <ul>
+    <ul id="navMenu">
       <li><a href="#servizi" data-i18n="nav_services">Servizi</a></li>
       <li><a href="#chi-sono" data-i18n="nav_about">Chi sono</a></li>
       <li><a href="#percorso" data-i18n="nav_path">Percorso</a></li>      
@@ -1292,6 +1368,11 @@
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
+      </button>
+
+      <!-- Menu mobile -->
+      <button class="icon-btn menu-btn" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span><span></span>
       </button>
     </div>
   </div>
@@ -2207,6 +2288,24 @@
     });
   });
   
+  // Menu mobile: apre/chiude, si chiude al clic su un link, fuori o con Esc
+  const menuToggle = document.getElementById('menuToggle');
+  function setMenu(open) {
+    nav.classList.toggle('menu-open', open);
+    menuToggle.setAttribute('aria-expanded', open);
+  }
+  menuToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setMenu(!nav.classList.contains('menu-open'));
+  });
+  navLinks.forEach(a => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('click', (e) => {
+    if (!nav.contains(e.target)) setMenu(false);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setMenu(false);
+  });
+
   // WhatsApp fisso: nascosto quando la sezione Contatti è a schermo
   const waFloat = document.getElementById('waFloat');
   new IntersectionObserver(([e]) => {
