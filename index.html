@@ -32,9 +32,8 @@
 
 <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/inter-v20-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/space-grotesk-v22-latin-700.woff2" as="font" type="font/woff2" crossorigin>
 
 <script>
   /* Applica il tema PRIMA del render per evitare flash */
@@ -50,6 +49,71 @@
 </script>
 
 <style>
+  /* ============ FONT (caricati dal sito, non da Google) ============ */
+  @font-face {
+    font-display: swap;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300;
+    src: url('fonts/inter-v20-latin-300.woff2') format('woff2');
+  }
+  @font-face {
+    font-display: swap;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fonts/inter-v20-latin-regular.woff2') format('woff2');
+  }
+  @font-face {
+    font-display: swap;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    src: url('fonts/inter-v20-latin-500.woff2') format('woff2');
+  }
+  @font-face {
+    font-display: swap;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    src: url('fonts/inter-v20-latin-600.woff2') format('woff2');
+  }
+  @font-face {
+    font-display: swap;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    src: url('fonts/inter-v20-latin-700.woff2') format('woff2');
+  }
+  @font-face {
+    font-display: swap;
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fonts/space-grotesk-v22-latin-regular.woff2') format('woff2');
+  }
+  @font-face {
+    font-display: swap;
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 500;
+    src: url('fonts/space-grotesk-v22-latin-500.woff2') format('woff2');
+  }
+  @font-face {
+    font-display: swap;
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 600;
+    src: url('fonts/space-grotesk-v22-latin-600.woff2') format('woff2');
+  }
+  @font-face {
+    font-display: swap;
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 700;
+    src: url('fonts/space-grotesk-v22-latin-700.woff2') format('woff2');
+  }
+
   /* ============ TEMA CHIARO (default) ============ */
   :root {
     --bg: #fefbff;
@@ -1203,13 +1267,64 @@
     background: var(--bg-footer);
     transition: background .4s ease;
   }
-  footer .container {
+  .footer-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 20px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
   }
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .footer-brand .logo-mark { width: 36px; height: 36px; font-size: 0.85rem; }
+  .footer-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .footer-role { font-size: 0.82rem; }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    list-style: none;
+  }
+  .footer-links a {
+    display: inline-block;
+    padding: 7px 14px;
+    border-radius: 100px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color .25s, background .25s;
+  }
+  .footer-links a:hover {
+    color: var(--violet);
+    background: rgba(139, 92, 246, 0.08);
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    padding-top: 20px;
+    font-size: 0.8rem;
+  }
+  .footer-privacy {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .footer-privacy svg { flex-shrink: 0; color: var(--violet); }
 
   /* ============ MOBILE ============ */
   /* Bottone menu (hamburger): visibile solo sotto i 900px */
@@ -1309,7 +1424,11 @@
     .contact-links .btn { width: 100%; }
 
     footer { padding: 28px 0 96px; }
-    footer .container { flex-direction: column; gap: 4px; text-align: center; }
+    .footer-top { flex-direction: column; text-align: center; gap: 16px; }
+    .footer-brand { flex-direction: column; gap: 10px; }
+    .footer-links { justify-content: center; }
+    .footer-bottom { flex-direction: column; align-items: center; text-align: center; }
+    .footer-privacy { flex-direction: column; gap: 6px; max-width: 34ch; }
 
     .blob { animation: none; filter: blur(80px); width: 320px; height: 320px; }
     .wa-float { right: 16px; bottom: 16px; width: 54px; height: 54px; }
@@ -1870,8 +1989,30 @@
 
 <footer>
   <div class="container">
-    <span>© <span id="year">2025</span> Nicole Farioli</span>
-    <span data-i18n="footer_role">Software Engineer</span>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="logo-mark" aria-hidden="true">NF</span>
+        <div>
+          <div class="footer-name">Nicole Farioli</div>
+          <div class="footer-role" data-i18n="footer_role">Software Engineer · Sassuolo (MO)</div>
+        </div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="mailto:fariolinicole06@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/nicole-farioli-417717248/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://github.com/nichifarioli" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="#main" data-i18n="footer_top">Torna su ↑</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year">2025</span> Nicole Farioli</span>
+      <span class="footer-privacy">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        <span data-i18n="footer_privacy">Nessun cookie né tracciamento: il sito ricorda solo tema e lingua scelti, sul tuo dispositivo.</span>
+      </span>
+    </div>
   </div>
 </footer>
 
@@ -2014,7 +2155,9 @@
       contact_desc: "Scrivimi due righe su cosa ti serve. Ti rispondo di solito entro un giorno, anche solo per capire se posso aiutarti.",
       contact_email: "Scrivimi una email",
 
-      footer_role: "Software Engineer"
+      footer_role: "Software Engineer · Sassuolo (MO)",
+      footer_top: "Torna su ↑",
+      footer_privacy: "Nessun cookie né tracciamento: il sito ricorda solo tema e lingua scelti, sul tuo dispositivo."
     },
     en: {
       skip: "Skip to content",
@@ -2143,7 +2286,9 @@
       contact_desc: "Drop me a couple of lines about what you need. I usually reply within a day, even just to see if I can help.",
       contact_email: "Send me an email",
 
-      footer_role: "Software Engineer"
+      footer_role: "Software Engineer · Sassuolo (MO), Italy",
+      footer_top: "Back to top ↑",
+      footer_privacy: "No cookies, no tracking: the site only remembers your chosen theme and language, on your device."
     }
   };
 
