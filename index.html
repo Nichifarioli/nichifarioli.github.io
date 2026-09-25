@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,18 +17,44 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+<script>
+  /* Applica il tema PRIMA del render per evitare flash */
+  (function() {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+
+    const savedLang = localStorage.getItem('lang') || 'it';
+    document.documentElement.setAttribute('lang', savedLang);
+  })();
+</script>
+
 <style>
+  /* ============ TEMA CHIARO (default) ============ */
   :root {
     --bg: #fefbff;
     --bg-soft: #f7f2ff;
     --bg-card: #ffffff;
+    --bg-nav: rgba(254, 251, 255, 0.75);
+    --bg-nav-scrolled: rgba(254, 251, 255, 0.92);
+    --bg-footer: rgba(247, 242, 255, 0.5);
+
     --text: #1a0f2e;
     --text-muted: #6b5b8a;
+
     --violet: #8b5cf6;
     --fuchsia: #e91e63;
     --cyan: #0ea5e9;
+
     --border: rgba(139, 92, 246, 0.15);
     --border-strong: rgba(139, 92, 246, 0.28);
+
+    --btn-secondary-bg: rgba(255, 255, 255, 0.9);
+    --btn-secondary-hover: #ffffff;
+
+    --photo-inner-bg: #f7f2ff;
+
     --radius: 20px;
     --radius-lg: 28px;
     --max-width: 1120px;
@@ -40,6 +66,49 @@
     --shadow-md: 0 12px 40px -10px rgba(139, 92, 246, 0.18);
     --shadow-lg: 0 24px 60px -20px rgba(139, 92, 246, 0.28);
     --shadow-glow: 0 20px 60px -15px rgba(233, 30, 99, 0.35);
+
+    --blob-1: #c4b5fd;
+    --blob-2: #f9a8d4;
+    --blob-3: #a5f3fc;
+    --blob-opacity: 0.28;
+  }
+
+  /* ============ TEMA SCURO ============ */
+  [data-theme="dark"] {
+    --bg: #0f0a1a;
+    --bg-soft: #16102a;
+    --bg-card: #1a1430;
+    --bg-nav: rgba(15, 10, 26, 0.7);
+    --bg-nav-scrolled: rgba(15, 10, 26, 0.92);
+    --bg-footer: rgba(22, 16, 42, 0.6);
+
+    --text: #f1ecff;
+    --text-muted: #a89bc2;
+
+    --violet: #a78bfa;
+    --fuchsia: #f472b6;
+    --cyan: #38bdf8;
+
+    --border: rgba(167, 139, 250, 0.18);
+    --border-strong: rgba(167, 139, 250, 0.35);
+
+    --btn-secondary-bg: rgba(255, 255, 255, 0.04);
+    --btn-secondary-hover: rgba(255, 255, 255, 0.08);
+
+    --photo-inner-bg: #16102a;
+
+    --grad-main: linear-gradient(135deg, #a78bfa 0%, #f472b6 50%, #38bdf8 100%);
+    --grad-text: linear-gradient(135deg, #a78bfa 0%, #f472b6 50%, #38bdf8 100%);
+
+    --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 12px 40px -10px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 24px 60px -20px rgba(0, 0, 0, 0.6);
+    --shadow-glow: 0 20px 60px -15px rgba(244, 114, 182, 0.4);
+
+    --blob-1: #5b21b6;
+    --blob-2: #be185d;
+    --blob-3: #0369a1;
+    --blob-opacity: 0.35;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -61,6 +130,7 @@
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    transition: background .4s ease, color .4s ease;
   }
 
   :focus-visible {
@@ -85,29 +155,29 @@
     position: fixed;
     border-radius: 50%;
     filter: blur(110px);
-    opacity: 0.28;
+    opacity: var(--blob-opacity);
     z-index: 0;
     pointer-events: none;
     will-change: transform;
+    transition: background .6s ease, opacity .6s ease;
   }
   .blob-1 {
     width: 520px; height: 520px;
-    background: #c4b5fd;
+    background: var(--blob-1);
     top: -180px; left: -180px;
     animation: float1 24s ease-in-out infinite;
   }
   .blob-2 {
     width: 450px; height: 450px;
-    background: #f9a8d4;
+    background: var(--blob-2);
     top: 35%; right: -150px;
     animation: float2 28s ease-in-out infinite;
   }
   .blob-3 {
     width: 500px; height: 500px;
-    background: #a5f3fc;
+    background: var(--blob-3);
     bottom: -150px; left: 15%;
     animation: float3 32s ease-in-out infinite;
-    opacity: 0.32;
   }
   @keyframes float1 {
     0%, 100% { transform: translate(0, 0) scale(1); }
@@ -143,7 +213,7 @@
   nav {
     position: sticky;
     top: 0;
-    background: rgba(254, 251, 255, 0.75);
+    background: var(--bg-nav);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border-bottom: 1px solid transparent;
@@ -152,7 +222,7 @@
   }
   nav.scrolled {
     border-bottom-color: var(--border);
-    background: rgba(254, 251, 255, 0.92);
+    background: var(--bg-nav-scrolled);
     box-shadow: 0 4px 20px rgba(139, 92, 246, 0.06);
   }
   nav .container {
@@ -160,6 +230,7 @@
     justify-content: space-between;
     align-items: center;
     height: 76px;
+    gap: 16px;
   }
 
   .logo {
@@ -172,6 +243,7 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
+    flex-shrink: 0;
   }
   .logo-mark {
     width: 32px; height: 32px;
@@ -197,6 +269,9 @@
     border-radius: 100px;
     backdrop-filter: blur(10px);
   }
+  [data-theme="dark"] nav ul {
+    background: rgba(167, 139, 250, 0.08);
+  }
   nav ul li a {
     color: var(--text-muted);
     text-decoration: none;
@@ -215,6 +290,79 @@
     color: #fff;
     background: var(--grad-main);
   }
+
+  /* ============ NAV ACTIONS (dark + lang) ============ */
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .icon-btn {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all .25s;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .icon-btn:hover {
+    color: var(--text);
+    border-color: var(--violet);
+    transform: translateY(-1px);
+  }
+  .icon-btn svg {
+    width: 18px;
+    height: 18px;
+    transition: transform .4s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity .3s;
+  }
+
+  /* Dark mode: mostra sole o luna in base al tema */
+  .icon-sun, .icon-moon {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  [data-theme="light"] .icon-sun { opacity: 0; transform: translate(-50%, -50%) rotate(90deg) scale(0.5); }
+  [data-theme="light"] .icon-moon { opacity: 1; transform: translate(-50%, -50%) rotate(0) scale(1); }
+  [data-theme="dark"] .icon-sun { opacity: 1; transform: translate(-50%, -50%) rotate(0) scale(1); }
+  [data-theme="dark"] .icon-moon { opacity: 0; transform: translate(-50%, -50%) rotate(-90deg) scale(0.5); }
+
+  /* Language button */
+  .lang-btn {
+    width: auto;
+    padding: 0 14px;
+    height: 40px;
+    border-radius: 100px;
+    gap: 6px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .lang-btn .lang-current {
+    color: var(--text);
+    transition: color .3s;
+  }
+  .lang-btn .lang-divider {
+    opacity: 0.4;
+    font-weight: 400;
+  }
+  .lang-btn .lang-other {
+    color: var(--text-muted);
+    opacity: 0.6;
+    transition: opacity .3s;
+  }
+  .lang-btn:hover .lang-other { opacity: 1; }
 
   /* ============ HERO ============ */
   .hero {
@@ -295,13 +443,13 @@
     box-shadow: var(--shadow-glow);
   }
   .btn-secondary {
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--btn-secondary-bg);
     color: var(--text);
     border-color: var(--border-strong);
     box-shadow: var(--shadow-sm);
   }
   .btn-secondary:hover {
-    background: #fff;
+    background: var(--btn-secondary-hover);
     border-color: var(--violet);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
@@ -410,8 +558,9 @@
     width: 100%;
     height: 100%;
     border-radius: calc(var(--radius-lg) - 4px);
-    background: var(--bg-soft);
+    background: var(--photo-inner-bg);
     overflow: hidden;
+    transition: background .4s ease;
   }
 
   .photo-inner img {
@@ -554,7 +703,7 @@
     top: 22px;
     width: 14px; height: 14px;
     border-radius: 50%;
-    background: #fff;
+    background: var(--bg);
     border: 2.5px solid var(--violet);
     z-index: 2;
     transition: all .35s;
@@ -785,7 +934,8 @@
     border-top: 1px solid var(--border);
     color: var(--text-muted);
     font-size: 0.85rem;
-    background: rgba(247, 242, 255, 0.5);
+    background: var(--bg-footer);
+    transition: background .4s ease;
   }
   footer .container {
     display: flex;
@@ -796,21 +946,32 @@
   }
 
   /* ============ MOBILE ============ */
+  @media (max-width: 900px) {
+    nav ul { display: none; }
+  }
+
   @media (max-width: 640px) {
     .container { padding: 0 22px; }
-    nav ul { gap: 2px; padding: 4px; }
-    nav ul li a { padding: 7px 11px; font-size: 0.76rem; }
-    .logo { font-size: 0.95rem; }
+    .logo { font-size: 0.9rem; }
+    .logo-mark { width: 28px; height: 28px; font-size: 0.85rem; }
+    .icon-btn { width: 36px; height: 36px; }
+    .lang-btn { padding: 0 11px; height: 36px; font-size: 0.75rem; }
     .hero { padding: 100px 0 70px; }
     section { padding: 70px 0; }
     .contact { padding: 80px 0; }
     .photo-wrap { max-width: 320px; }
   }
+
+  /* Transizioni fluide su tutti gli elementi quando cambio tema */
+  body, nav, footer, .btn-secondary, .step, .timeline-card, .project,
+  .skill-pill, .stack-item, .photo-inner {
+    transition: background .4s ease, border-color .4s ease, color .4s ease;
+  }
 </style>
 </head>
 <body>
 
-<a href="#main" class="skip-link">Salta al contenuto</a>
+<a href="#main" class="skip-link" data-i18n="skip">Salta al contenuto</a>
 
 <div class="scroll-progress" id="scrollProgress"></div>
 
@@ -825,11 +986,31 @@
       Nicole Farioli
     </a>
     <ul>
-      <li><a href="#chi-sono">Chi sono</a></li>
-      <li><a href="#percorso">Percorso</a></li>
-      <li><a href="#progetti">Progetti</a></li>
-      <li><a href="#contatti">Contatti</a></li>
+      <li><a href="#chi-sono" data-i18n="nav_about">Chi sono</a></li>
+      <li><a href="#percorso" data-i18n="nav_path">Percorso</a></li>
+      <li><a href="#progetti" data-i18n="nav_projects">Progetti</a></li>
+      <li><a href="#contatti" data-i18n="nav_contact">Contatti</a></li>
     </ul>
+
+    <div class="nav-actions">
+      <!-- Language toggle -->
+      <button class="icon-btn lang-btn" id="langToggle" aria-label="Cambia lingua / Change language">
+        <span class="lang-current" id="langCurrent">IT</span>
+        <span class="lang-divider">/</span>
+        <span class="lang-other" id="langOther">EN</span>
+      </button>
+
+      <!-- Dark mode toggle -->
+      <button class="icon-btn" id="themeToggle" aria-label="Cambia tema / Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -838,38 +1019,38 @@
   <!-- HERO -->
   <section class="hero" aria-labelledby="hero-title">
     <div class="container">
-      <h1 id="hero-title">
+      <h1 id="hero-title" data-i18n-html="hero_title">
         Sviluppo <span class="grad">siti web</span><br>
         e <span class="grad">web app</span> su misura
       </h1>
-      <p class="hero-desc">
+      <p class="hero-desc" data-i18n="hero_desc">
         Sono Nicole, software engineer. Lavoro con piccole attività,
         professionisti e aziende che hanno bisogno di qualcosa di solido
         e fatto bene.
       </p>
       <div class="cta-group">
-        <a href="#contatti" class="btn btn-primary magnetic">Scrivimi</a>
-        <a href="#progetti" class="btn btn-secondary magnetic">Guarda i progetti</a>
+        <a href="#contatti" class="btn btn-primary magnetic" data-i18n="cta_contact">Scrivimi</a>
+        <a href="#progetti" class="btn btn-secondary magnetic" data-i18n="cta_projects">Guarda i progetti</a>
       </div>
     </div>
   </section>
 
-  <!-- CHI SONO con FOTO -->
+  <!-- CHI SONO -->
   <section id="chi-sono" aria-labelledby="chi-sono-title">
     <div class="container">
-      <div class="section-title reveal">Chi sono</div>
-      <h2 class="section-heading reveal" id="chi-sono-title">
+      <div class="section-title reveal" data-i18n="about_title">Chi sono</div>
+      <h2 class="section-heading reveal" id="chi-sono-title" data-i18n="about_heading">
         Un po' di me, senza troppi giri di parole
       </h2>
 
       <div class="about-grid">
         <div class="about-text reveal">
-          <p>
+          <p data-i18n-html="about_p1">
             Mi chiamo <strong>Nicole</strong> e faccio la <strong>software engineer</strong>.
             Ho studiato Ingegneria Informatica a Modena e oggi lavoro in una software
             house che si occupa di automazione industriale.
           </p>
-          <p>
+          <p data-i18n-html="about_p2">
             Nel tempo libero sviluppo <strong>siti, web app e app mobile</strong> per
             chi ha bisogno di qualcosa di concreto. Mi piace capire come lavora
             davvero il cliente prima di scrivere una riga di codice — perché
@@ -904,29 +1085,29 @@
   <!-- COME LAVORO -->
   <section id="come-lavoro" aria-labelledby="come-lavoro-title">
     <div class="container">
-      <div class="section-title reveal">Come lavoro</div>
-      <h2 class="section-heading reveal" id="come-lavoro-title">
+      <div class="section-title reveal" data-i18n="how_title">Come lavoro</div>
+      <h2 class="section-heading reveal" id="come-lavoro-title" data-i18n="how_heading">
         Dal primo messaggio alla consegna
       </h2>
 
       <div class="steps-grid">
         <div class="step reveal">
-          <h3>Ascolto</h3>
-          <p>
+          <h3 data-i18n="step1_title">Ascolto</h3>
+          <p data-i18n="step1_desc">
             Ti chiedo cosa ti serve, come lavori oggi e cosa vorresti migliorare.
             Senza tecnicismi: prima capisco, poi parlo io.
           </p>
         </div>
         <div class="step reveal">
-          <h3>Proposta</h3>
-          <p>
+          <h3 data-i18n="step2_title">Proposta</h3>
+          <p data-i18n="step2_desc">
             Ti scrivo cosa propongo, con tempi e costi chiari. Se qualcosa
             non ti convince, si cambia prima di iniziare.
           </p>
         </div>
         <div class="step reveal">
-          <h3>Sviluppo</h3>
-          <p>
+          <h3 data-i18n="step3_title">Sviluppo</h3>
+          <p data-i18n="step3_desc">
             Costruisco, testo e metto online. Ti spiego come usarlo e resto
             disponibile per dubbi o sistemazioni.
           </p>
@@ -938,8 +1119,8 @@
   <!-- PERCORSO -->
   <section id="percorso" aria-labelledby="percorso-title">
     <div class="container">
-      <div class="section-title reveal">Percorso</div>
-      <h2 class="section-heading reveal" id="percorso-title">
+      <div class="section-title reveal" data-i18n="path_title">Percorso</div>
+      <h2 class="section-heading reveal" id="percorso-title" data-i18n="path_heading">
         Cosa ho fatto finora
       </h2>
 
@@ -948,10 +1129,10 @@
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
-            <span class="timeline-date">2025 — oggi</span>
-            <h3 class="timeline-title">Software Engineer</h3>
+            <span class="timeline-date" data-i18n="exp1_date">2025 — oggi</span>
+            <h3 class="timeline-title" data-i18n="exp1_title">Software Engineer</h3>
             <p class="timeline-place">Technosource S.r.l. — Sassuolo (MO)</p>
-            <p class="timeline-desc">
+            <p class="timeline-desc" data-i18n="exp1_desc">
               Software house di automazione industriale. Sviluppo in C#/.NET
               con database SQL, revamping di software legacy in VB6 e app
               mobile in Flutter. Mi sono occupata anche del sito aziendale.
@@ -962,10 +1143,10 @@
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
-            <span class="timeline-date">Feb — Mag 2025</span>
-            <h3 class="timeline-title">Analista Junior Tecnico/Funzionale</h3>
+            <span class="timeline-date" data-i18n="exp2_date">Feb — Mag 2025</span>
+            <h3 class="timeline-title" data-i18n="exp2_title">Analista Junior Tecnico/Funzionale</h3>
             <p class="timeline-place">Accenture Italia — Verona</p>
-            <p class="timeline-desc">
+            <p class="timeline-desc" data-i18n="exp2_desc">
               Analisi funzionale di processi end-to-end in ambito Financial
               Services, per clienti bancari e assicurativi europei. Raccolta
               requisiti e supporto all'implementazione.
@@ -976,10 +1157,10 @@
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
-            <span class="timeline-date">Mar — Nov 2024</span>
-            <h3 class="timeline-title">Un anno in Australia</h3>
+            <span class="timeline-date" data-i18n="exp3_date">Mar — Nov 2024</span>
+            <h3 class="timeline-title" data-i18n="exp3_title">Un anno in Australia</h3>
             <p class="timeline-place">Mitolo Winery & Kicco Roaster — McLaren Vale</p>
-            <p class="timeline-desc">
+            <p class="timeline-desc" data-i18n="exp3_desc">
               Front of house e barista in una cantina e in una torrefazione.
               Un'esperienza fuori dal mondo tech che mi ha insegnato a
               gestire clienti e situazioni impreviste.
@@ -990,10 +1171,10 @@
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
-            <span class="timeline-date">2018 — 2023</span>
-            <h3 class="timeline-title">Laurea in Ingegneria Informatica</h3>
-            <p class="timeline-place">Università di Modena e Reggio Emilia</p>
-            <p class="timeline-desc">
+            <span class="timeline-date" data-i18n="exp4_date">2018 — 2023</span>
+            <h3 class="timeline-title" data-i18n="exp4_title">Laurea in Ingegneria Informatica</h3>
+            <p class="timeline-place" data-i18n="exp4_place">Università di Modena e Reggio Emilia</p>
+            <p class="timeline-desc" data-i18n="exp4_desc">
               Tesi sull'adozione degli NFT nei marchi di moda di lusso.
               Basi solide di programmazione (C++, Java, Python), database,
               ingegneria del software e reti.
@@ -1004,10 +1185,10 @@
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
-            <span class="timeline-date">2013 — 2018</span>
-            <h3 class="timeline-title">Liceo Scientifico</h3>
+            <span class="timeline-date" data-i18n="exp5_date">2013 — 2018</span>
+            <h3 class="timeline-title" data-i18n="exp5_title">Liceo Scientifico</h3>
             <p class="timeline-place">Liceo Formiggini — Sassuolo (MO)</p>
-            <p class="timeline-desc">
+            <p class="timeline-desc" data-i18n="exp5_desc">
               Cinque anni tra matematica, fisica e scienze. È qui che ho
               capito che mi piaceva risolvere problemi.
             </p>
@@ -1021,8 +1202,8 @@
   <!-- PROGETTI -->
   <section id="progetti" aria-labelledby="progetti-title">
     <div class="container">
-      <div class="section-title reveal">Progetti</div>
-      <h2 class="section-heading reveal" id="progetti-title">
+      <div class="section-title reveal" data-i18n="projects_title">Progetti</div>
+      <h2 class="section-heading reveal" id="progetti-title" data-i18n="projects_heading">
         Cose che ho costruito
       </h2>
 
@@ -1030,26 +1211,26 @@
         <article class="project reveal">
           <div class="project-header">
             <h3>Walletly — App di finanza personale</h3>
-            <span class="project-tag">Progetto mio</span>
+            <span class="project-tag" data-i18n="proj1_tag">Progetto mio</span>
           </div>
-          <p class="project-desc">
+          <p class="project-desc" data-i18n="proj1_desc">
             Un'app per tenere sotto controllo stipendio, spese fisse e variabili,
             budget per categoria e obiettivi di risparmio. Con previsione del
             saldo di fine mese.
           </p>
 
-          <div class="project-subtitle">Cosa fa</div>
+          <div class="project-subtitle" data-i18n="proj_features">Cosa fa</div>
           <ul>
-            <li>Gestione stipendio con accredito automatico simulato</li>
-            <li>Spese fisse ricorrenti e variabili con categorie</li>
-            <li>Distinzione bancomat vs carta di credito</li>
-            <li>Budget per categoria con alert allo sforamento</li>
-            <li>Obiettivi di risparmio con versamento mensile</li>
-            <li>Previsione saldo di fine mese</li>
-            <li>Grafici: torta categorie, liquidità, confronto mensile</li>
-            <li>Blocco biometrico (Face ID / impronta)</li>
-            <li>Promemoria push per scadenze</li>
-            <li>Backup ed export dati in JSON</li>
+            <li data-i18n="proj1_f1">Gestione stipendio con accredito automatico simulato</li>
+            <li data-i18n="proj1_f2">Spese fisse ricorrenti e variabili con categorie</li>
+            <li data-i18n="proj1_f3">Distinzione bancomat vs carta di credito</li>
+            <li data-i18n="proj1_f4">Budget per categoria con alert allo sforamento</li>
+            <li data-i18n="proj1_f5">Obiettivi di risparmio con versamento mensile</li>
+            <li data-i18n="proj1_f6">Previsione saldo di fine mese</li>
+            <li data-i18n="proj1_f7">Grafici: torta categorie, liquidità, confronto mensile</li>
+            <li data-i18n="proj1_f8">Blocco biometrico (Face ID / impronta)</li>
+            <li data-i18n="proj1_f9">Promemoria push per scadenze</li>
+            <li data-i18n="proj1_f10">Backup ed export dati in JSON</li>
           </ul>
 
           <div class="project-stack">
@@ -1060,25 +1241,25 @@
             <span class="stack-item">Push notifications</span>
             <span class="stack-item">Biometria</span>
           </div>
-          <div class="project-role">Sviluppata da me dall'inizio alla fine: design e codice.</div>
+          <div class="project-role" data-i18n="proj1_role">Sviluppata da me dall'inizio alla fine: design e codice.</div>
         </article>
 
         <article class="project reveal">
           <div class="project-header">
-            <h3>Web app per un personal trainer</h3>
-            <span class="project-tag">Cliente</span>
+            <h3 data-i18n="proj2_title">Web app per un personal trainer</h3>
+            <span class="project-tag" data-i18n="proj2_tag">Cliente</span>
           </div>
-          <p class="project-desc">
+          <p class="project-desc" data-i18n="proj2_desc">
             Una web app per gestire le schede di allenamento dei clienti
             e l'agenda degli appuntamenti in un unico posto, da browser.
           </p>
 
-          <div class="project-subtitle">Cosa fa</div>
+          <div class="project-subtitle" data-i18n="proj_features">Cosa fa</div>
           <ul>
-            <li>Creazione e gestione schede di allenamento personalizzate</li>
-            <li>Calendario appuntamenti con vista giornaliera e settimanale</li>
-            <li>Anagrafica clienti con storico allenamenti</li>
-            <li>Accesso da browser, nessuna installazione richiesta</li>
+            <li data-i18n="proj2_f1">Creazione e gestione schede di allenamento personalizzate</li>
+            <li data-i18n="proj2_f2">Calendario appuntamenti con vista giornaliera e settimanale</li>
+            <li data-i18n="proj2_f3">Anagrafica clienti con storico allenamenti</li>
+            <li data-i18n="proj2_f4">Accesso da browser, nessuna installazione richiesta</li>
           </ul>
 
           <div class="project-stack">
@@ -1086,7 +1267,7 @@
             <span class="stack-item">Node.js</span>
             <span class="stack-item">PostgreSQL</span>
           </div>
-          <div class="project-role">
+          <div class="project-role" data-i18n="proj2_role">
             Seguita dalla raccolta requisiti fino alla consegna.
           </div>
         </article>
@@ -1098,17 +1279,17 @@
   <section id="contatti" class="contact" aria-labelledby="contatti-title">
     <div class="container">
       <div class="contact-inner">
-        <div class="section-title reveal">Contatti</div>
-        <h2 class="section-heading reveal" id="contatti-title" style="margin-left:auto;margin-right:auto;">
+        <div class="section-title reveal" data-i18n="contact_title">Contatti</div>
+        <h2 class="section-heading reveal" id="contatti-title" style="margin-left:auto;margin-right:auto;" data-i18n="contact_heading">
           Hai qualcosa in mente?
         </h2>
-        <p class="reveal">
+        <p class="reveal" data-i18n="contact_desc">
           Scrivimi due righe su cosa ti serve. Ti rispondo di solito
           entro un giorno, anche solo per capire se posso aiutarti.
         </p>
         <div class="contact-links reveal">
 
-          <a href="mailto:fariolinicole06@gmail.com" class="btn btn-primary magnetic">
+          <a href="mailto:fariolinicole06@gmail.com" class="btn btn-primary magnetic" data-i18n="contact_email">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="2" y="4" width="20" height="16" rx="2"/>
               <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
@@ -1147,24 +1328,272 @@
 <footer>
   <div class="container">
     <span>© <span id="year">2025</span> Nicole Farioli</span>
-    <span>Software Engineer</span>
+    <span data-i18n="footer_role">Software Engineer</span>
   </div>
 </footer>
 
 <script>
+  /* ============================================================
+     TRADUZIONI
+  ============================================================ */
+  const translations = {
+    it: {
+      skip: "Salta al contenuto",
+      nav_about: "Chi sono",
+      nav_path: "Percorso",
+      nav_projects: "Progetti",
+      nav_contact: "Contatti",
+
+      hero_title: 'Sviluppo <span class="grad">siti web</span><br>e <span class="grad">web app</span> su misura',
+      hero_desc: "Sono Nicole, software engineer. Lavoro con piccole attività, professionisti e aziende che hanno bisogno di qualcosa di solido e fatto bene.",
+      cta_contact: "Scrivimi",
+      cta_projects: "Guarda i progetti",
+
+      about_title: "Chi sono",
+      about_heading: "Un po' di me, senza troppi giri di parole",
+      about_p1: 'Mi chiamo <strong>Nicole</strong> e faccio la <strong>software engineer</strong>. Ho studiato Ingegneria Informatica a Modena e oggi lavoro in una software house che si occupa di automazione industriale.',
+      about_p2: 'Nel tempo libero sviluppo <strong>siti, web app e app mobile</strong> per chi ha bisogno di qualcosa di concreto. Mi piace capire come lavora davvero il cliente prima di scrivere una riga di codice — perché la soluzione giusta è quella che risolve un problema vero, non quella più alla moda.',
+
+      how_title: "Come lavoro",
+      how_heading: "Dal primo messaggio alla consegna",
+      step1_title: "Ascolto",
+      step1_desc: "Ti chiedo cosa ti serve, come lavori oggi e cosa vorresti migliorare. Senza tecnicismi: prima capisco, poi parlo io.",
+      step2_title: "Proposta",
+      step2_desc: "Ti scrivo cosa propongo, con tempi e costi chiari. Se qualcosa non ti convince, si cambia prima di iniziare.",
+      step3_title: "Sviluppo",
+      step3_desc: "Costruisco, testo e metto online. Ti spiego come usarlo e resto disponibile per dubbi o sistemazioni.",
+
+      path_title: "Percorso",
+      path_heading: "Cosa ho fatto finora",
+
+      exp1_date: "2025 — oggi",
+      exp1_title: "Software Engineer",
+      exp1_desc: "Software house di automazione industriale. Sviluppo in C#/.NET con database SQL, revamping di software legacy in VB6 e app mobile in Flutter. Mi sono occupata anche del sito aziendale.",
+
+      exp2_date: "Feb — Mag 2025",
+      exp2_title: "Analista Junior Tecnico/Funzionale",
+      exp2_desc: "Analisi funzionale di processi end-to-end in ambito Financial Services, per clienti bancari e assicurativi europei. Raccolta requisiti e supporto all'implementazione.",
+
+      exp3_date: "Mar — Nov 2024",
+      exp3_title: "Un anno in Australia",
+      exp3_desc: "Front of house e barista in una cantina e in una torrefazione. Un'esperienza fuori dal mondo tech che mi ha insegnato a gestire clienti e situazioni impreviste.",
+
+      exp4_date: "2018 — 2023",
+      exp4_title: "Laurea in Ingegneria Informatica",
+      exp4_place: "Università di Modena e Reggio Emilia",
+      exp4_desc: "Tesi sull'adozione degli NFT nei marchi di moda di lusso. Basi solide di programmazione (C++, Java, Python), database, ingegneria del software e reti.",
+
+      exp5_date: "2013 — 2018",
+      exp5_title: "Liceo Scientifico",
+      exp5_desc: "Cinque anni tra matematica, fisica e scienze. È qui che ho capito che mi piaceva risolvere problemi.",
+
+      projects_title: "Progetti",
+      projects_heading: "Cose che ho costruito",
+
+      proj1_tag: "Progetto mio",
+      proj1_desc: "Un'app per tenere sotto controllo stipendio, spese fisse e variabili, budget per categoria e obiettivi di risparmio. Con previsione del saldo di fine mese.",
+      proj_features: "Cosa fa",
+      proj1_f1: "Gestione stipendio con accredito automatico simulato",
+      proj1_f2: "Spese fisse ricorrenti e variabili con categorie",
+      proj1_f3: "Distinzione bancomat vs carta di credito",
+      proj1_f4: "Budget per categoria con alert allo sforamento",
+      proj1_f5: "Obiettivi di risparmio con versamento mensile",
+      proj1_f6: "Previsione saldo di fine mese",
+      proj1_f7: "Grafici: torta categorie, liquidità, confronto mensile",
+      proj1_f8: "Blocco biometrico (Face ID / impronta)",
+      proj1_f9: "Promemoria push per scadenze",
+      proj1_f10: "Backup ed export dati in JSON",
+      proj1_role: "Sviluppata da me dall'inizio alla fine: design e codice.",
+
+      proj2_title: "Web app per un personal trainer",
+      proj2_tag: "Cliente",
+      proj2_desc: "Una web app per gestire le schede di allenamento dei clienti e l'agenda degli appuntamenti in un unico posto, da browser.",
+      proj2_f1: "Creazione e gestione schede di allenamento personalizzate",
+      proj2_f2: "Calendario appuntamenti con vista giornaliera e settimanale",
+      proj2_f3: "Anagrafica clienti con storico allenamenti",
+      proj2_f4: "Accesso da browser, nessuna installazione richiesta",
+      proj2_role: "Seguita dalla raccolta requisiti fino alla consegna.",
+
+      contact_title: "Contatti",
+      contact_heading: "Hai qualcosa in mente?",
+      contact_desc: "Scrivimi due righe su cosa ti serve. Ti rispondo di solito entro un giorno, anche solo per capire se posso aiutarti.",
+      contact_email: "Scrivimi una email",
+
+      footer_role: "Software Engineer"
+    },
+    en: {
+      skip: "Skip to content",
+      nav_about: "About",
+      nav_path: "Journey",
+      nav_projects: "Projects",
+      nav_contact: "Contact",
+
+      hero_title: 'I build <span class="grad">websites</span><br>and <span class="grad">web apps</span> that fit',
+      hero_desc: "I'm Nicole, a software engineer. I work with small businesses, professionals and companies that need something solid and well made.",
+      cta_contact: "Get in touch",
+      cta_projects: "See my work",
+
+      about_title: "About",
+      about_heading: "A bit about me, no fluff",
+      about_p1: 'My name is <strong>Nicole</strong> and I work as a <strong>software engineer</strong>. I studied Computer Engineering in Modena and I currently work in a software house focused on industrial automation.',
+      about_p2: 'In my free time I build <strong>websites, web apps and mobile apps</strong> for people who need something real. I like understanding how a client actually works before writing a single line of code — because the right solution is the one that solves a real problem, not the trendiest one.',
+
+      how_title: "How I work",
+      how_heading: "From first message to delivery",
+      step1_title: "Listen",
+      step1_desc: "I ask what you need, how you work today and what you'd like to improve. No jargon: first I understand, then I talk.",
+      step2_title: "Proposal",
+      step2_desc: "I write down what I suggest, with clear timelines and costs. If something doesn't convince you, we change it before starting.",
+      step3_title: "Build",
+      step3_desc: "I build, test and deploy. I show you how to use it and I'm around for questions or fixes.",
+
+      path_title: "Journey",
+      path_heading: "What I've done so far",
+
+      exp1_date: "2025 — present",
+      exp1_title: "Software Engineer",
+      exp1_desc: "Software house focused on industrial automation. Development in C#/.NET with SQL databases, revamping of legacy VB6 software and Flutter mobile apps. I also handled the company website.",
+
+      exp2_date: "Feb — May 2025",
+      exp2_title: "Junior Technical/Functional Analyst",
+      exp2_desc: "Functional analysis of end-to-end processes in Financial Services, for European banking and insurance clients. Requirements gathering and implementation support.",
+
+      exp3_date: "Mar — Nov 2024",
+      exp3_title: "A year in Australia",
+      exp3_desc: "Front of house and barista in a winery and a roastery. An experience outside the tech world that taught me to handle clients and unexpected situations.",
+
+      exp4_date: "2018 — 2023",
+      exp4_title: "BSc in Computer Engineering",
+      exp4_place: "University of Modena and Reggio Emilia",
+      exp4_desc: "Thesis on NFT adoption by luxury fashion brands. Strong foundations in programming (C++, Java, Python), databases, software engineering and networks.",
+
+      exp5_date: "2013 — 2018",
+      exp5_title: "Scientific High School",
+      exp5_desc: "Five years of maths, physics and science. That's where I realised I enjoyed solving problems.",
+
+      projects_title: "Projects",
+      projects_heading: "Things I've built",
+
+      proj1_tag: "Personal project",
+      proj1_desc: "An app to track salary, fixed and variable expenses, category budgets and savings goals. With end-of-month balance forecast.",
+      proj_features: "What it does",
+      proj1_f1: "Salary tracking with simulated automatic credit",
+      proj1_f2: "Recurring fixed and variable expenses by category",
+      proj1_f3: "Debit card vs credit card distinction",
+      proj1_f4: "Category budgets with overspending alerts",
+      proj1_f5: "Savings goals with monthly contributions",
+      proj1_f6: "End-of-month balance forecast",
+      proj1_f7: "Charts: category pie, liquidity, monthly comparison",
+      proj1_f8: "Biometric lock (Face ID / fingerprint)",
+      proj1_f9: "Push reminders for deadlines",
+      proj1_f10: "Backup and JSON data export",
+      proj1_role: "Built entirely by me, from design to code.",
+
+      proj2_title: "Web app for a personal trainer",
+      proj2_tag: "Client",
+      proj2_desc: "A web app to manage clients' workout plans and appointments in one place, from the browser.",
+      proj2_f1: "Create and manage custom workout plans",
+      proj2_f2: "Appointment calendar with daily and weekly views",
+      proj2_f3: "Client registry with workout history",
+      proj2_f4: "Browser access, no installation required",
+      proj2_role: "Followed from requirements gathering to delivery.",
+
+      contact_title: "Contact",
+      contact_heading: "Got something in mind?",
+      contact_desc: "Drop me a couple of lines about what you need. I usually reply within a day, even just to see if I can help.",
+      contact_email: "Send me an email",
+
+      footer_role: "Software Engineer"
+    }
+  };
+
+  /* ============================================================
+     LINGUA
+  ============================================================ */
+  let currentLang = document.documentElement.getAttribute('lang') || 'it';
+
+  function applyLanguage(lang) {
+    const dict = translations[lang];
+    if (!dict) return;
+
+    document.documentElement.setAttribute('lang', lang);
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined) el.textContent = dict[key];
+    });
+
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.getAttribute('data-i18n-html');
+      if (dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+
+    // Aggiorna il bottone lingua
+    document.getElementById('langCurrent').textContent = lang.toUpperCase();
+    document.getElementById('langOther').textContent = lang === 'it' ? 'EN' : 'IT';
+
+    // Aggiorna il testo del WhatsApp precompilato
+    const waBtn = document.querySelector('a[href*="wa.me"]');
+    if (waBtn) {
+      const msg = lang === 'it'
+        ? "Ciao Nicole, ho visto il tuo sito e vorrei informazioni per un progetto."
+        : "Hi Nicole, I saw your website and I'd like some info about a project.";
+      waBtn.href = `https://wa.me/393491303503?text=${encodeURIComponent(msg)}`;
+    }
+
+    localStorage.setItem('lang', lang);
+    currentLang = lang;
+  }
+
+  document.getElementById('langToggle').addEventListener('click', () => {
+    applyLanguage(currentLang === 'it' ? 'en' : 'it');
+  });
+
+  /* ============================================================
+     TEMA (DARK/LIGHT)
+  ============================================================ */
+  function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+
+    // Aggiorna theme-color del browser (barra indirizzi su mobile)
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    if (metaTheme) {
+      metaTheme.setAttribute('content', theme === 'dark' ? '#0f0a1a' : '#fefbff');
+    }
+  }
+
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    setTheme(current === 'dark' ? 'light' : 'dark');
+  });
+
+  /* Ascolta cambi di sistema se l'utente non ha mai scelto */
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+      setTheme(e.matches ? 'dark' : 'light');
+    }
+  });
+
+  /* ============================================================
+     RESTO DEL SITO
+  ============================================================ */
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  // Scroll progress
   const progress = document.getElementById('scrollProgress');
   window.addEventListener('scroll', () => {
     const h = document.documentElement.scrollHeight - window.innerHeight;
     progress.style.width = (window.scrollY / h) * 100 + '%';
   }, { passive: true });
 
+  // Nav scrolled
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 20);
   }, { passive: true });
 
+  // Reveal
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
@@ -1175,6 +1604,7 @@
   }, { threshold: 0.1, rootMargin: '0px 0px -80px 0px' });
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+  // Magnetic
   document.querySelectorAll('.magnetic').forEach(btn => {
     btn.addEventListener('mousemove', (e) => {
       const rect = btn.getBoundingClientRect();
@@ -1187,8 +1617,9 @@
     });
   });
 
+  // Nav attiva
   const sections = document.querySelectorAll('main section[id]');
-  const navLinks = document.querySelectorAll('nav a[href^="#"]');
+  const navLinks = document.querySelectorAll('nav ul a[href^="#"]');
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -1199,6 +1630,9 @@
     });
   }, { rootMargin: '-40% 0px -55% 0px' });
   sections.forEach(s => obs.observe(s));
+
+  /* Applica lingua salvata al caricamento */
+  applyLanguage(currentLang);
 </script>
 
 </body>
